@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
-import "./globals.scss";
+import "./globals.css";
 import Header from "@/components/Header";
 
 const poppins = Poppins({
