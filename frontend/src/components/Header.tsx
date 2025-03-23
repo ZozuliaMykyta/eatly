@@ -25,8 +25,8 @@ const Header = () => {
     },
   ];
   return (
-    <header className="header">
-      <div className="pt-[47px]! pb-[25px]! container flex justify-between items-center border-b-1 border-[#cbcbcb]">
+    <header className="header px-[15px]">
+      <div className="pt-[47px]! pb-[25px]! px-0! container flex justify-between items-center border-b-1 border-[#cbcbcb]">
         <div className="flex gap-[50px] sm:gap-[102px] ">
           <Link className="flex items-center gap-[11px]" href="/">
             <Image
