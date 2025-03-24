@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable}`}
+        className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
       >
         <Header />
         {children}
