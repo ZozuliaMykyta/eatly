@@ -37,7 +37,7 @@ const Header = () => {
                 height={42}
                 priority
               />
-              <span className="text-[22px] leading-[1.3] text-purple font-semibold">
+              <span className="text-[22px] leading-[130%] text-purple font-semibold">
                 eatly
               </span>
             </Link>
@@ -94,9 +94,9 @@ const Header = () => {
           <div
             className={`${
               isOpenBurger ? "translate-x-[0]" : "translate-x-[-110%]"
-            } header__menu fixed top-0 left-0 w-full bg-white z-20 transition-all duration-500 flex flex-col items-center justify-center text-center`}
+            } header__menu fixed top-0 left-0 w-full h-full bg-white z-20 transition-all duration-500 flex flex-col items-center justify-center text-center`}
           >
-            <nav className="mt-[100px]">
+            <nav>
               <ul>
                 {menuList.map((item) => (
                   <li key={item.id} className="not-last:mb-[15px]">
@@ -121,7 +121,7 @@ const Header = () => {
               </Link>
               <Link
                 href="#!"
-                className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] bg-purple text-lighwhite py-[17px] px-[25px] border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple"
+                className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
               >
                 sing up
               </Link>

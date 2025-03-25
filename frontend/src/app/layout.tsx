@@ -26,7 +26,9 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Eatly",
-  icons: "/assets/img/favicon.svg",
+  icons: {
+    icon: "/assets/img/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -39,8 +41,10 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
       >
-        <Header />
-        {children}
+        <div className="wrapper">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );

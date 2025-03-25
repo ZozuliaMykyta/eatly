@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-.container {
-  @apply max-w-[1276px] px-[15px] py-0 mx-auto my-0;
-}
-
 @theme {
   --color-purple: rgb(108, 95, 188);
   --color-gray: rgb(96, 96, 96);
@@ -12,4 +8,14 @@
   --font-poppins: "Poppins", sans-serif;
   --font-manrope: "Manrope", sans-serif;
   --font-roboto: "Roboto", sans-serif;
+}
+
+.container {
+  @apply max-w-[1276px] px-[15px] py-0 mx-auto my-0;
+}
+.wrapper {
+  @apply relative flex flex-col min-h-screen overflow-hidden;
+}
+.purple-btn {
+  @apply bg-purple text-lighwhite border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple;
 }
