@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 @theme {
+  /* colors */
   --color-purple: rgb(108, 95, 188);
   --color-gray: rgb(96, 96, 96);
   --color-lighwhite: rgb(249, 249, 249);
+  /* fonts */
   --font-inter: "Inter", sans-serif;
   --font-poppins: "Poppins", sans-serif;
   --font-manrope: "Manrope", sans-serif;
   --font-roboto: "Roboto", sans-serif;
+  /* backgrounds */
+  --background-about: url("/assets/img/home/about-bg.png");
 }
 
 .container {
@@ -18,4 +22,8 @@
 }
 .purple-btn {
   @apply bg-purple text-lighwhite border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple;
+}
+
+.about-section {
+  background: var(--background-about) 0 0 / cover;
 }
