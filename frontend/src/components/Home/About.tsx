@@ -19,7 +19,12 @@ const About = () => {
     },
   ];
   return (
-    <section className="about-section">
+    <section
+      className="bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url("/assets/img/home/about-bg.png")`,
+      }}
+    >
       <div className="container max-w-[970px]! max-[900px]:py-[80px]! min-[900px]:py-[55px]!">
         <div className="flex-col min-[900px]:flex-row min-[900px]:flex items-center justify-between text-center">
           {aboutData.map((el) => (

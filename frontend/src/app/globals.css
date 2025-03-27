@@ -24,6 +24,9 @@
   @apply bg-purple text-lighwhite border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple;
 }
 
-.about-section {
-  background: var(--background-about) 0 0 / cover;
-}
+/* .about-section {
+  background: var(--background-about);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */

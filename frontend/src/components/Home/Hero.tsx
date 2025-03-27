@@ -6,7 +6,7 @@ import food from "@/assets/img/home/hero.png";
 const Hero = () => {
   return (
     <section className="hero mt-[57px] min-[900px]:mt-[80px]">
-      <div className="container flex items-center gap-[73px] flex-col min-[900px]:flex-row text-center min-[900px]:text-left">
+      <div className="container flex items-center gap-[73px] flex-col min-[900px]:flex-row text-center min-[900px]:text-left mb-[75px]! md:mb-[90px]! lg:mb-[130px]!">
         <div>
           <h6 className="inline-block relative text-[15px] leading-[1.2] tracking-[2px] text-[rgba(32,31,31,0.2)] pl-[74px]">
             <span className="absolute top-[50%] left-0 w-[54px] h-[1px] bg-[rgb(32,31,31)] opacity-[0.2]"></span>
