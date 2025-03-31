@@ -65,7 +65,7 @@ const Header = () => {
             </Link>
             <Link
               href="#!"
-              className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] bg-purple text-lighwhite py-[17px] px-[25px] border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple"
+              className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
             >
               sing up
             </Link>

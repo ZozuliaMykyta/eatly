@@ -32,7 +32,7 @@ const Hero = () => {
             </Link>
             <Link
               href="#!"
-              className="capitalize rounded-[12px] leading-[24px] tracking-[1%] font-medium text-[16px] text-purple border-2 border-purple transition-all duration-300 hover:bg-purple hover:text-white px-[28px] py-[18px]"
+              className="capitalize rounded-[12px] leading-[24px] tracking-[1%] font-medium text-[16px] text-purple border-2 border-purple transition-all duration-300 hover:bg-purple hover:text-white px-[28px] py-[18px] active:scale-95 active:shadow-lg"
             >
               go pro
             </Link>
