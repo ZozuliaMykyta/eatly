@@ -18,7 +18,7 @@ const App = () => {
   ];
   return (
     <section>
-      <div className="container flex items-center justify-between flex-col-reverse md:flex-row gap-[110px] md:gap-[80px] my-[67px]! md:my-[120px]! text-center md:text-left">
+      <div className="container custom-border-b flex items-center justify-between flex-col-reverse md:flex-row gap-[110px] md:gap-[80px] my-[67px]! md:my-[120px]! text-center md:text-left">
         <div className="relative lg:ml-[112px]">
           <Image
             src={mobileIllustr}

@@ -23,3 +23,7 @@
 .purple-btn {
   @apply bg-purple text-lighwhite border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple active:scale-95 active:shadow-lg;
 }
+
+.custom-border-b {
+  @apply border-b-[1px] border-b-[rgb(203,203,203)] pb-[60px] md:pb-[120px];
+}
