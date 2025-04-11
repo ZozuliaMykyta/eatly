@@ -1,6 +1,6 @@
 node_modules
-.next
 out
 .DS_Store
 npm-debug.log
 .env
+nodemon.json

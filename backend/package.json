@@ -1,10 +1,15 @@
 {
+  "scripts": {
+    "server": "nodemon"
+  },
   "dependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "mongoose": "^8.13.2"
+    "mongoose": "^8.13.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
   }
 }

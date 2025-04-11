@@ -1,8 +1,7 @@
 # Use the official Node.js image
 FROM node:23-alpine3.20
-
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /backend
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
@@ -13,8 +12,8 @@ RUN npm install
 # Copy the project source code into the container
 COPY . .
 
-# Expose the Next.js port (default: 3000)
-EXPOSE 3000
+# Expose the Node.js port (default: 5000)
+EXPOSE 5000
 
 # Start the development server
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "server"]
