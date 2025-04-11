@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import StoreProvider from "./StoreProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -41,10 +42,12 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
       >
-        <div className="wrapper">
-          <Header />
-          {children}
-        </div>
+        <StoreProvider>
+          <div className="wrapper">
+            <Header />
+            {children}
+          </div>
+        </StoreProvider>
       </body>
     </html>
   );
