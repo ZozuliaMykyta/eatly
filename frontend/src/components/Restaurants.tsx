@@ -1,6 +1,7 @@
 "use client";
 import { useGetRestaurantsQuery } from "@/lib/services/api";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Restaurants = () => {
@@ -19,26 +20,27 @@ const Restaurants = () => {
   return (
     <section>
       <div className="container custom-border-b">
-        <h3 className="capitalize text-center text-[45px] leading-[25px]">
+        <h3 className="capitalize text-center text-[45px] leading-[45px]">
           our top <span className="text-purple">restaurants</span>
         </h3>
-        <div className="mt-[86px] flex justify-between gap-[30px] items-center">
+        <div className="mt-[50px] md:mt-[86px] grid grid-rows-3 min-[900px]:grid-rows-1 grid-cols-1 min-[900px]:grid-cols-3 justify-between gap-[30px] items-center">
           {data?.slice(0, 3).map((item) => (
-            <div
+            <Link
+              href="#!"
               key={item._id}
               style={{
                 boxShadow:
                   "5.95px 71.35px 35.67px 0px rgba(229, 229, 229, 0.7)",
               }}
-              className="relative rounded-[30px] bg-white border-[1.25px] border-[rgb(244,244,246)] shadow-(5.95px 71.35px 35.67px 0px rgba(229, 229, 229, 0.7))"
+              className="relative rounded-[30px] cursor-pointer transition-all duration-300 hover:scale-[1.1] bg-white border-[1.25px] border-[rgb(244,244,246)] shadow-(5.95px 71.35px 35.67px 0px rgba(229, 229, 229, 0.7))"
             >
-              <div className="w-[396px] h-[176px] overflow-hidden rounded-t-[30px]">
+              <div className="relative w-full max-h-[250px] aspect-[396/176]">
                 <Image
-                  className="object-cover w-full h-full"
                   src={item.img}
                   alt={item.title}
-                  width={396}
-                  height={176}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 396px"
+                  fill
+                  className="object-cover rounded-lg rounded-t-[30px]"
                 />
               </div>
               <div className="px-[34px] pt-[11px] pb-[18px]">
@@ -48,7 +50,7 @@ const Restaurants = () => {
                 >
                   {item.theme}
                 </span>
-                <h5 className="text-[26px] leading-[42px] mt-1 text-[rgb(50,49,66)]">
+                <h5 className="text-[20px] min-[900px]:text-[20px] min-[1110px]:text-[26px] leading-[42px] mt-1 text-[rgb(50,49,66)]">
                   {item.title}
                 </h5>
                 <div className="flex items-center gap-5">
@@ -68,15 +70,30 @@ const Restaurants = () => {
                   </div>
                 </div>
               </div>
-              <Image
-                className="absolute bottom-[27px] right-[40px]"
-                src="/assets/img/Book-mark.svg"
-                alt="Book mark"
-                width={14}
-                height={20}
-              ></Image>
-            </div>
+              <div
+                className="absolute bottom-[17px] right-[26px] py-[10px] px-[12px] bg-[rgb(219,217,238)] rounded-full shadow-sm hover:shadow-gray-400 transition-all duration-300 active:scale-[1] hover:scale-[1.2] cursor-pointer"
+                onMouseDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.preventDefault()}
+              >
+                <div className="relative w-[14px] h-[20px]">
+                  <Image
+                    src="/assets/img/Book-mark.svg"
+                    alt="Book mark"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </Link>
           ))}
+        </div>
+        <div className="text-right mt-[65px]">
+          <Link
+            className="font-medium leading-[45px] transition-all duration-300 text-[rgb(172,173,185)] hover:text-black"
+            href="#!"
+          >
+            View All
+          </Link>
         </div>
       </div>
     </section>

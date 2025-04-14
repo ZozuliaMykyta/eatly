@@ -32,7 +32,7 @@ const App = () => {
           />
         </div>
         <div>
-          <h2 className="text-[32px] md:text-[40px] lg:text-[50px] font-bold leading-[58px] md:max-w-[500px] capitalize">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[50px] font-bold leading-[42px] md:leading-[58px] md:max-w-[500px] capitalize">
             premium <span className="text-purple">quality</span> for your health
           </h2>
           <ul className="mt-[28px] lg:mt-[64px]">
