@@ -2,10 +2,12 @@
 import { useGetRestaurantsQuery } from "@/lib/services/api";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Restaurants = () => {
   const { data, error, isLoading } = useGetRestaurantsQuery();
+  const router = useRouter();
 
   const getThemeBg = (theme: string) => {
     switch (theme.toLowerCase()) {
@@ -25,8 +27,8 @@ const Restaurants = () => {
         </h3>
         <div className="mt-[50px] md:mt-[86px] grid grid-rows-3 min-[900px]:grid-rows-1 grid-cols-1 min-[900px]:grid-cols-3 justify-between gap-[30px] items-center">
           {data?.slice(0, 3).map((item) => (
-            <Link
-              href="#!"
+            <div
+              onClick={() => router.push(`/restaurants/${item._id}`)}
               key={item._id}
               style={{
                 boxShadow:
@@ -84,7 +86,7 @@ const Restaurants = () => {
                   />
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
         <div className="text-right mt-[65px]">
