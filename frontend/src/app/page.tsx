@@ -1,3 +1,4 @@
+import Dishes from "@/components/Dishes";
 import About from "@/components/Home/About";
 import App from "@/components/Home/App";
 import Hero from "@/components/Home/Hero";
@@ -9,6 +10,7 @@ export default function Home() {
       <About />
       <App />
       <Restaurants />
+      <Dishes />
     </>
   );
 }

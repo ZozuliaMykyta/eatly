@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import restaurantsRoutes from "./routes/restaurantsRoutes.ts";
+import dishesRoutes from "./routes/dishesRoutes.ts";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(restaurantsRoutes);
+app.use(dishesRoutes);
 
 mongoose
   .connect(process.env.DATABASE_URL as string)
