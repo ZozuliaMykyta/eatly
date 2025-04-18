@@ -56,7 +56,7 @@ const Restaurants = () => {
                   {item.title}
                 </h5>
                 <div className="flex items-center gap-5">
-                  <p className="text-[20px] leading-[26px] font-normal text-[rgb(142,151,166)]">
+                  <p className="text-[20px] font-manrope leading-[26px] font-normal text-[rgb(142,151,166)]">
                     {item.delivery_time}
                   </p>
                   <div className="flex items-center gap-2.5">
@@ -66,7 +66,7 @@ const Restaurants = () => {
                       height={24}
                       width={24}
                     ></Image>
-                    <p className="text-[20px] leading-[26px] font-normal text-[rgb(142,151,166)] mt-[1px]">
+                    <p className="text-[20px] font-manrope leading-[26px] font-normal text-[rgb(142,151,166)] mt-[1px]">
                       {item.rating}
                     </p>
                   </div>
@@ -89,7 +89,7 @@ const Restaurants = () => {
             </div>
           ))}
         </div>
-        <div className="text-right mt-[65px]">
+        <div className="text-center min-[900px]:text-right mt-[65px]">
           <Link
             className="font-medium leading-[45px] transition-all duration-300 text-[rgb(172,173,185)] hover:text-black"
             href="#!"

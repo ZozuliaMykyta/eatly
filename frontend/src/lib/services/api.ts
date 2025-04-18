@@ -15,4 +15,4 @@ export const eatlyApi = createApi({
   }),
 });
 
-export const { useGetRestaurantsQuery } = eatlyApi;
+export const { useGetRestaurantsQuery, useGetDishesQuery } = eatlyApi;
