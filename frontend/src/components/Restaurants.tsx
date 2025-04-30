@@ -19,6 +19,26 @@ const Restaurants = () => {
         return "rgb(247,237,208)";
     }
   };
+  if (isLoading) {
+    return (
+      <div className="container text-center custom-border-bx">
+        <h3 className="capitalize text-center text-[45px] leading-[45px]">
+          our top <span className="text-purple">restaurants</span>
+        </h3>
+        <h5 className="mt-5">Loading..</h5>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="container text-center custom-border-b">
+        <h3 className="capitalize text-center text-[45px] leading-[45px]">
+          our top <span className="text-purple">restaurants</span>
+        </h3>
+        <h5 className="mt-5">Something went wrong</h5>
+      </div>
+    );
+  }
   return (
     <section>
       <div className="container custom-border-b">
