@@ -1,54 +1,53 @@
 "use client";
-import React from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import React, { useState } from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
 
 const Customer = () => {
-  const [emblaRef] = useEmblaCarousel();
-
+  const [activeSlide, setActiveSlide] = useState<number>();
   const review =
     "“ Online invoice payment helps companies save time, are faster and save maximum effort for the clients and save maximum effort. Online invoice payment helps companies save time ”";
 
-  const reviewSliderData = [
-    {
-      id: 1,
-      name: "Alexander R.",
-      date: 1,
-      review: review,
-    },
-    {
-      id: 2,
-      name: "Alexander R.",
-      date: 1,
-      review: review,
-    },
-    {
-      id: 3,
-      name: "Alexander R.",
-      date: 1,
-      review: review,
-    },
-    {
-      id: 4,
-      name: "Alexander R.",
-      date: 1,
-      review: review,
-    },
-  ];
+  const reviewSliderData = {
+    name: "Alexander R.",
+    date: 1,
+    review: review,
+  };
   return (
     <section className="mt-[50px] md:mt-[116px]">
       <div className="container">
         <h3 className="capitalize text-center text-[45px] leading-[45px]">
           <span className="text-purple">Customer</span> Say
         </h3>
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {reviewSliderData.map((item) => (
-              <div className="embla__slide" key={item.id}>
-                Slide 1
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+        >
+          {[...Array(5)].map((item, index) => (
+            <SwiperSlide
+              className={`bg-amber-400 ${
+                activeSlide === index ? "bg-amber-950" : ""
+              }`}
+              key={index}
+            >
+              <p>{reviewSliderData.review}</p>
+              <div>
+                {[...Array(5)].map((_, index) => (
+                  <Image
+                    width={18}
+                    height={17}
+                    src="/assets/img/star.svg"
+                    alt="star"
+                    key={index}
+                  />
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );

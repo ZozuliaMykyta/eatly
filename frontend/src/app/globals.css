@@ -28,6 +28,6 @@
   @apply border-b-[1px] border-b-[rgb(203,203,203)] pb-[60px] md:pb-[120px];
 }
 
-.embla__slide {
+/* .embla__slide {
   @apply flex-none w-full;
-}
+} */

@@ -3,10 +3,6 @@ import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import StoreProvider from "./StoreProvider";
-// import function to register Swiper custom elements
-import { register } from "swiper/element/bundle";
-// register Swiper custom elements
-register();
 
 const poppins = Poppins({
   subsets: ["latin"],
