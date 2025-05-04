@@ -12,7 +12,7 @@ const Hero = () => {
             <span className="absolute top-[50%] left-0 w-[54px] h-[1px] bg-[rgb(32,31,31)] opacity-[0.2]"></span>
             over 1000 users
           </h6>
-          <h1 className="text-[36px] mt-[18px] md:text-[50px] lg:text-[58px] xl:text-[75px] leading-[120%] max-w-none min-[900px]:max-w-[600px]">
+          <h1 className="text-[36px] mt-[18px] md:text-[46px] lg:text-[54px] xl:text-[70px] leading-[120%] max-w-none min-[900px]:max-w-[600px]">
             Enjoy Foods All Over The <span className="text-purple">World</span>
           </h1>
           <p className="font-inter text-[18px] font-normal leading-[28px] mt-[16px] max-w-none min-[900px]:max-w-[500px]">
@@ -60,7 +60,7 @@ const Hero = () => {
           </div>
         </div>
         <div>
-          <Image src={food} alt="food" priority width={603} height={540} />
+          <Image src={food} alt="food" priority width={680} height={638} />
         </div>
       </div>
     </section>
