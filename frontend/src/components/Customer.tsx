@@ -37,7 +37,6 @@ const Customer = () => {
             },
             600: {
               slidesPerView: 1.3,
-              spaceBetween: 32,
             },
             1024: {
               slidesPerView: 2,
