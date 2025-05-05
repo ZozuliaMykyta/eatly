@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import StoreProvider from "./StoreProvider";
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/pagination";
 
 const poppins = Poppins({
   subsets: ["latin"],
