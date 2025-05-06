@@ -1,4 +1,5 @@
 import Customer from "@/components/Customer";
+import Discount from "@/components/Discount";
 import Dishes from "@/components/Dishes";
 import About from "@/components/Home/About";
 import App from "@/components/Home/App";
@@ -13,6 +14,7 @@ export default function Home() {
       <Restaurants />
       <Dishes />
       <Customer />
+      <Discount />
     </>
   );
 }
