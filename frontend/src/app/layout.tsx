@@ -6,6 +6,7 @@ import StoreProvider from "./StoreProvider";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
           <div className="wrapper">
             <Header />
             {children}
+            <Footer />
           </div>
         </StoreProvider>
       </body>
