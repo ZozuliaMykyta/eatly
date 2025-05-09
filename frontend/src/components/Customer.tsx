@@ -17,7 +17,7 @@ const Customer = () => {
     review: review,
   };
   return (
-    <section className="my-[70px] md:my-[116px]">
+    <section className="mt-[70px] md:mt-[116px]">
       <div className="container relative">
         <h3 className="capitalize text-center text-[45px] leading-[45px]">
           <span className="text-purple">Customer</span> Say
