@@ -18,7 +18,7 @@ const Discount = () => {
           </div>
         </div>
         <Image
-          className="absolute bottom-[-120px] min-[500px]:bottom-[-210px] min-[900px]:bottom-[-60px] right-[50%] max-[900px]:translate-x-[50%] min-[900px]:right-[70px] max-[500px]:w-[200px]"
+          className="absolute bottom-[-120px] min-[500px]:bottom-[-190px] min-[900px]:bottom-[-60px] right-[50%] max-[900px]:translate-x-[50%] min-[900px]:right-[70px] max-[500px]:w-[200px]"
           src={discountImage}
           alt="food"
         />
