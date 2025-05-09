@@ -99,14 +99,17 @@ const Header = () => {
             <nav>
               <ul>
                 {menuList.map((item) => (
-                  <li key={item.id} className="not-last:mb-[15px]">
+                  <li
+                    key={item.id}
+                    className="not-last:mb-[15px] relative group"
+                  >
                     <Link
-                      className="relative text-[18px] text-gray leading-[26px] font-inter font-medium capitalize hover:text-purple transition-all duration-300 group"
+                      className="text-[18px] text-gray leading-[26px] font-inter font-medium capitalize hover:text-purple transition-all duration-300 "
                       href={`/${item.link.toLowerCase()}`}
                     >
-                      <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
                       {item.link}
                     </Link>
+                    <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
                   </li>
                 ))}
               </ul>
