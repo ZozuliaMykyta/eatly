@@ -49,7 +49,7 @@ export default function RootLayout({
         <StoreProvider>
           <div className="wrapper">
             <Header />
-            {children}
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </StoreProvider>
