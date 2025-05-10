@@ -57,14 +57,14 @@ const Header = () => {
           </div>
           <div className="hidden lg:flex gap-x-[36px] items-center">
             <Link
-              href="/profile"
+              href="/SignIn"
               className="relative text-[18px] text-gray leading-[26px] font-bold capitalize hover:text-purple transition-all duration-300 group"
             >
               <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
               login
             </Link>
             <Link
-              href="#!"
+              href="/SignUp"
               className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
             >
               sing up
