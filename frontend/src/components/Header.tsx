@@ -57,7 +57,7 @@ const Header = () => {
           </div>
           <div className="hidden lg:flex gap-x-[36px] items-center">
             <Link
-              href="#!"
+              href="/profile"
               className="relative text-[18px] text-gray leading-[26px] font-bold capitalize hover:text-purple transition-all duration-300 group"
             >
               <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
