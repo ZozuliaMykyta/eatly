@@ -35,7 +35,6 @@ const Header = () => {
                 alt="eatly"
                 width={46}
                 height={42}
-                priority
               />
               <span className="text-[22px] leading-[130%] text-purple font-semibold">
                 eatly
