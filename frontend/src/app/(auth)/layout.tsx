@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 
@@ -21,6 +22,13 @@ const roboto = Roboto({
   weight: ["400", "700"],
   variable: "--font-roboto",
 });
+
+export const metadata: Metadata = {
+  title: "Eatly",
+  icons: {
+    icon: "/assets/img/favicon.svg",
+  },
+};
 
 export default function AuthLayout({
   children,
