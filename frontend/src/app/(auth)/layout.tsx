@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
+import "../globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
