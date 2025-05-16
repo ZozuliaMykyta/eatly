@@ -31,3 +31,7 @@
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   @apply !bg-purple !rounded-[50px];
 }
+
+.auth-btn {
+  @apply bg-[rgb(245,245,245)] rounded-[13px] text-center w-[181px] flex justify-center items-center flex-col cursor-pointer py-[16px] transition-all duration-300 border-2 border-[rgb(245,245,245)] hover:border-black;
+}
