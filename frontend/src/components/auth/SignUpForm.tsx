@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 const SignUpForm = () => {
+  const [visiblePassword, setVisiblePassword] = useState(false);
   return (
     <form className="flex flex-col mt-[36px] gap-[24px] max-w-[382px] m-auto">
       <div className="relative group">
@@ -56,7 +58,7 @@ const SignUpForm = () => {
       <div className="relative">
         <div className="group">
           <input
-            type="password"
+            type={visiblePassword ? "text" : "password"}
             name="password"
             className="auth-input !pr-[60px]"
             placeholder="PASSWORD"
@@ -80,6 +82,7 @@ const SignUpForm = () => {
           </svg>
         </div>
         <svg
+          onClick={() => setVisiblePassword(!visiblePassword)}
           className="absolute top-[50%] right-7 translate-y-[-50%] group cursor-pointer"
           width="21.679199"
           height="19.456055"
@@ -88,7 +91,7 @@ const SignUpForm = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            className="group-focus-within:fill-purple transition-all duration-300 group-hover:fill-purple"
+            className="group-focus-within:fill-purple transition-all duration-300 group-active:fill-purple group-hover:fill-purple"
             id="Icon"
             d="M20.32 1.42C20.64 1.09 20.64 0.57 20.32 0.24C19.99 -0.09 19.46 -0.09 19.14 0.24L1.35 18.03C1.03 18.35 1.03 18.88 1.35 19.21C1.68 19.53 2.2 19.53 2.53 19.21L5.7 16.04C7.21 16.76 8.96 17.23 10.83 17.23C13.82 17.23 16.49 16.03 18.42 14.55C19.38 13.81 20.18 12.99 20.74 12.18C21.29 11.39 21.67 10.53 21.67 9.72C21.67 8.92 21.29 8.05 20.74 7.27C20.18 6.46 19.38 5.63 18.42 4.89C18.13 4.67 17.82 4.45 17.49 4.24L20.32 1.42ZM10.83 2.22C11.98 2.22 13.08 2.4 14.12 2.7C14.31 2.76 14.37 3 14.23 3.15L13.31 4.07C13.24 4.14 13.14 4.16 13.05 4.14C12.34 3.98 11.6 3.89 10.83 3.89C8.29 3.89 5.96 4.91 4.27 6.21C3.42 6.87 2.75 7.57 2.3 8.22C1.83 8.89 1.66 9.41 1.66 9.72C1.66 10.03 1.83 10.56 2.3 11.23C2.69 11.79 3.25 12.4 3.95 12.98C4.08 13.09 4.1 13.28 3.98 13.4L3.19 14.19C3.09 14.29 2.93 14.3 2.82 14.21C2.05 13.56 1.41 12.86 0.93 12.18C0.38 11.39 0 10.53 0 9.72C0 8.92 0.38 8.05 0.93 7.27C1.49 6.46 2.29 5.63 3.25 4.89C5.18 3.42 7.85 2.22 10.83 2.22ZM16.28 5.45L14.31 7.42C14.75 8.08 15 8.87 15 9.72C15 12.03 13.14 13.89 10.83 13.89C9.98 13.89 9.19 13.64 8.54 13.2L6.96 14.78C8.14 15.26 9.46 15.56 10.83 15.56C13.38 15.56 15.7 14.53 17.4 13.23C18.25 12.58 18.92 11.88 19.37 11.23C19.83 10.56 20.01 10.03 20.01 9.72C20.01 9.41 19.83 8.89 19.37 8.22C18.92 7.57 18.25 6.87 17.4 6.21C17.05 5.95 16.68 5.69 16.28 5.45ZM11.23 5.57C11.1 5.56 10.97 5.55 10.83 5.55C8.53 5.55 6.67 7.42 6.67 9.72C6.67 9.85 6.67 9.99 6.68 10.11C6.7 10.33 6.97 10.41 7.12 10.26L8.47 8.91C8.72 8.18 9.29 7.61 10.02 7.36L11.37 6.01C11.52 5.85 11.44 5.59 11.23 5.57ZM9.76 11.98C10.08 12.14 10.45 12.22 10.83 12.22C12.22 12.22 13.34 11.1 13.34 9.72C13.34 9.34 13.25 8.97 13.09 8.64L9.76 11.98Z"
             fill="#C2C3CB"
