@@ -24,7 +24,7 @@ const Hero = () => {
             </Link>
           </p>
           <div className="mt-[41px] md:mt-[53px] flex items-center gap-[18px] justify-normal max-[900px]:justify-center">
-            <button className="capitalize purple-btn rounded-[12px] leading-[24px] tracking-[1%] font-medium text-[16px] px-[30px] py-[18px] cursor-pointer">
+            <button className="capitalize purple-btn rounded-[12px] leading-[24px] tracking-[1%] font-medium text-[16px] px-[30px] py-[18px]">
               get started
             </button>
             <button className="cursor-pointer capitalize rounded-[12px] leading-[24px] tracking-[1%] font-medium text-[16px] text-purple border-2 border-purple transition-all duration-300 hover:bg-purple hover:text-white px-[28px] py-[18px] active:scale-95 active:shadow-lg">
