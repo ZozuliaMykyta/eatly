@@ -1,17 +1,21 @@
+import SignUpForm from "@/components/auth/SignUpForm";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
   return (
     <div className="flex justify-between min-h-screen">
       <div className="relative px-[48px] pt-[32px] pb-[48px] flex flex-col flex-[53%]">
-        <Image
-          src="/assets/img/favicon.svg"
-          alt="ealty's logo"
-          width={46}
-          height={42}
-          className="absolute top-[32px] left-[48px] z-10"
-        ></Image>
+        <Link href="/">
+          <Image
+            src="/assets/img/favicon.svg"
+            alt="ealty's logo"
+            width={46}
+            height={42}
+            className="absolute top-[32px] left-[48px] z-10"
+          ></Image>
+        </Link>
         <div className="flex flex-col flex-grow min-h-0 justify-center">
           <div className="text-center">
             <h2 className="text-[rgb(50,49,66)] text-[36px] leading-[125%]">
@@ -38,20 +42,12 @@ const page = () => {
             <h3 className="text-[20px] text-[rgba(0,90,100,0.35)] uppercase mt-[33px] font-medium">
               or
             </h3>
-            <form className="flex flex-col mt-[36px]">
-              <div>
-                <input type="text" name="full-name" />
-              </div>
-              <div>
-                <input type="email" name="email" />
-              </div>
-              <div>
-                <input type="password" name="password" />
-              </div>
-              <button>sign up</button>
-            </form>
-            <h3>
-              already have an account? <span>log in</span>
+            <SignUpForm />
+            <h3 className="mt-[24px] capitalize tetx-[19px] font-bold leading-7">
+              already have an account?{" "}
+              <Link href="#!" className="text-purple">
+                log in
+              </Link>
             </h3>
           </div>
         </div>

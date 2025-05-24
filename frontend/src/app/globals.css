@@ -21,7 +21,7 @@
   @apply relative flex flex-col min-h-screen overflow-hidden;
 }
 .purple-btn {
-  @apply bg-purple text-lighwhite border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple active:scale-95 active:shadow-lg;
+  @apply bg-purple cursor-pointer text-lighwhite border-2 border-purple transition-all duration-300 hover:bg-white hover:text-purple active:scale-95 active:shadow-lg;
 }
 
 .custom-border-b {
@@ -33,5 +33,9 @@
 }
 
 .auth-btn {
-  @apply bg-[rgb(245,245,245)] rounded-[13px] text-center w-[181px] flex justify-center items-center flex-col cursor-pointer py-[16px] transition-all duration-300 border-2 border-[rgb(245,245,245)] hover:border-black;
+  @apply bg-[rgb(245,245,245)] rounded-[13px] text-center w-[181px] flex justify-center items-center flex-col cursor-pointer py-[16px] transition-all duration-300 border-2 border-[rgb(245,245,245)] hover:border-black focus:border-purple focus:outline-none;
+}
+
+.auth-input {
+  @apply w-full py-[24px] pl-[77px] pr-[27px] text-purple border-2 border-[rgb(245,245,245)] text-[16px] leading-[25px] bg-[rgb(245,245,245)] rounded-[14px] transition-all duration-300 focus:outline-none focus:border-purple placeholder:text-[rgb(194,195,203)] placeholder:font-semibold;
 }
