@@ -1,17 +1,38 @@
 "use client";
 import React, { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ISignUp } from "@/interfaces/ISignUp";
 
 const SignUpForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignUp>();
+  const onSubmit: SubmitHandler<ISignUp> = (data: ISignUp) => console.log(data);
+
   return (
-    <form className="flex flex-col mt-[36px] gap-[24px] max-w-[382px] m-auto">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col mt-[36px] gap-[24px] max-w-[382px] m-auto"
+    >
       <div className="relative group">
         <input
           type="text"
-          name="full-name"
           className="auth-input"
           placeholder="FULL NAME"
+          {...register("fullName", {
+            required: true,
+            minLength: {
+              value: 3,
+              message: "Full name must be at least 3 characters",
+            },
+          })}
         />
+        {errors.fullName && (
+          <span className="text-red-600">{errors.fullName.message}</span>
+        )}
         <svg
           className="absolute top-[50%] left-6 translate-y-[-50%]"
           width="20.567383"
@@ -33,10 +54,19 @@ const SignUpForm = () => {
       <div className="relative group">
         <input
           type="email"
-          name="email"
           className="auth-input"
           placeholder="EMAIL"
+          {...register("email", {
+            required: true,
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Invalid email address",
+            },
+          })}
         />
+        {errors.email && (
+          <span className="text-red-600">{errors.email.message}</span>
+        )}
         <svg
           className="absolute top-[50%] left-6 translate-y-[-50%]"
           width="22.577148"
@@ -59,10 +89,34 @@ const SignUpForm = () => {
         <div className="group">
           <input
             type={visiblePassword ? "text" : "password"}
-            name="password"
             className="auth-input !pr-[60px]"
             placeholder="PASSWORD"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters",
+              },
+              validate: {
+                hasUpperCase: (value) =>
+                  /[A-Z]/.test(value) ||
+                  "Must contain at least one uppercase letter",
+                hasLowerCase: (value) =>
+                  /[a-z]/.test(value) ||
+                  "Must contain at least one lowercase letter",
+                hasNumber: (value) =>
+                  /\d/.test(value) || "Must contain at least one number",
+                hasSpecialChar: (value) =>
+                  /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                  "Must contain at least one special character",
+              },
+            })}
           />
+          {errors.password && (
+            <p className="text-red-600 text-sm mt-1">
+              {errors.password.message}
+            </p>
+          )}
           <svg
             className="absolute top-[50%] left-6 translate-y-[-50%]"
             width="18.356445"
@@ -100,7 +154,10 @@ const SignUpForm = () => {
           />
         </svg>
       </div>
-      <button className="uppercase text-[18px] font-semibold leading-[27px] rounded-[15px] purple-btn h-[74px]">
+      <button
+        type="submit"
+        className="uppercase text-[18px] font-semibold leading-[27px] rounded-[15px] purple-btn h-[74px]"
+      >
         sign up
       </button>
     </form>
