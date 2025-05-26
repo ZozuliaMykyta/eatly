@@ -1,3 +1,4 @@
+import AuthBtns from "@/components/auth/AuthBtns";
 import SignUpForm from "@/components/auth/SignUpForm";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,24 +22,7 @@ const page = () => {
             <h2 className="text-[rgb(50,49,66)] text-[36px] leading-[125%]">
               Sign Up To eatly
             </h2>
-            <div className="mt-[48px] flex items-center justify-center gap-5">
-              <button className="auth-btn">
-                <Image
-                  src="/assets/img/auth/Google.svg"
-                  alt="google account icon"
-                  width={27}
-                  height={28}
-                ></Image>
-              </button>
-              <button className="auth-btn">
-                <Image
-                  src="/assets/img/auth/apple.svg"
-                  alt="apple id icon"
-                  width={26}
-                  height={31}
-                ></Image>
-              </button>
-            </div>
+            <AuthBtns />
             <h3 className="text-[20px] text-[rgba(0,90,100,0.35)] uppercase mt-[33px] font-medium">
               or
             </h3>
