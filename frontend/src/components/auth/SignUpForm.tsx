@@ -50,7 +50,9 @@ const SignUpForm = () => {
           </svg>
         </div>
         {errors.fullName && (
-          <span className="text-red-600">{errors.fullName.message}</span>
+          <span className="text-red-600 text-sm mt-1">
+            {errors.fullName.message}
+          </span>
         )}
       </div>
       <div>
@@ -86,7 +88,9 @@ const SignUpForm = () => {
           </svg>
         </div>
         {errors.email && (
-          <span className="text-red-600">{errors.email.message}</span>
+          <span className="text-red-600 text-sm mt-1">
+            {errors.email.message}
+          </span>
         )}
       </div>
       <div>
