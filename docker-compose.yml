@@ -7,7 +7,6 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app
-      - /app/node_modules
     environment:
       - NODE_ENV=development
   backend:
@@ -18,7 +17,6 @@ services:
       - "5000:5000"
     volumes:
       - ./backend:/backend
-      - /backend/node_modules
     environment:
       - NODE_ENV=development
       - DATABASE_URL=mongodb://mongo:27017/eatly_db
