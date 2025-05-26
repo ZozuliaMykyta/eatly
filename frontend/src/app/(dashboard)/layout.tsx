@@ -7,7 +7,6 @@ import StoreProvider from "../StoreProvider";
 import "swiper/css";
 import "swiper/css/pagination";
 import Footer from "@/components/Footer";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -47,15 +46,13 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
       >
-        <GoogleOAuthProvider clientId={process.env.GOOGLE_API_ID || ""}>
-          <StoreProvider>
-            <div className="wrapper">
-              <Header />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
-          </StoreProvider>
-        </GoogleOAuthProvider>
+        <StoreProvider>
+          <div className="wrapper">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </StoreProvider>
       </body>
     </html>
   );
