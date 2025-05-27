@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import restaurantsRoutes from "./routes/restaurantsRoutes.ts";
 import dishesRoutes from "./routes/dishesRoutes.ts";
+import AuthGoogleRoutes from "./routes/AuthGoogleRoutes.ts";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 app.use(restaurantsRoutes);
 app.use(dishesRoutes);
+app.use(AuthGoogleRoutes);
 
 mongoose
   .connect(process.env.DATABASE_URL as string)
