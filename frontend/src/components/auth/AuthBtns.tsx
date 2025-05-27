@@ -5,8 +5,17 @@ import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 
 const AuthBtns = () => {
   const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
-    flow: "implicit", // или 'auth-code'
+    onSuccess: async (codeResponse) => {
+      const result = await fetch("http://localhost:5000/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: codeResponse.code }),
+      });
+
+      const tokens = await result.json();
+      console.log("Tokens and user info:", tokens);
+    },
+    flow: "auth-code",
   });
   return (
     <div className="mt-[48px] flex items-center justify-center gap-5">
