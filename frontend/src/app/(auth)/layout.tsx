@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import React from "react";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 import "../globals.css";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -42,11 +41,9 @@ export default function AuthLayout({
       <body
         className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
       >
-        <GoogleOAuthProvider clientId={process.env.GOOGLE_API_ID || ""}>
-          <div className="wrapper">
-            <main className="flex-grow">{children}</main>
-          </div>
-        </GoogleOAuthProvider>
+        <div className="wrapper">
+          <main className="flex-grow">{children}</main>
+        </div>
       </body>
     </html>
   );

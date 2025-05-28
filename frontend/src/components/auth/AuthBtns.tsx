@@ -1,25 +1,23 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { oauth_google } from "./oauth_google";
 
 const AuthBtns = () => {
-  const login = useGoogleLogin({
-    onSuccess: async (codeResponse) => {
-      const result = await fetch("http://localhost:5000/auth/google", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: codeResponse.code }),
-      });
-
-      const tokens = await result.json();
-      console.log("Tokens and user info:", tokens);
-    },
-    flow: "auth-code",
-  });
+  const handleRedirectGoogle = () => {
+    const query = {
+      client_id: oauth_google.client_id,
+      redirect_uri: oauth_google.redirect_uri,
+      response_type: "code",
+      scope: oauth_google.scopes,
+    };
+    const url = new URL(oauth_google.endpoint);
+    url.search = new URLSearchParams(query).toString();
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
+  };
   return (
     <div className="mt-[48px] flex items-center justify-center gap-5">
-      <button className="auth-btn" onClick={() => login()}>
+      <button className="auth-btn" onClick={handleRedirectGoogle}>
         <Image
           src="/assets/img/auth/Google.svg"
           alt="google account icon"
