@@ -3,6 +3,6 @@ import AuthGoogleController from "../controllers/AuthGoogleController";
 
 const router = express.Router();
 
-router.post("/auth/google", AuthGoogleController);
+router.get("/auth/google/callback", AuthGoogleController);
 
 export default router;
