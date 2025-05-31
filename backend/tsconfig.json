@@ -1,16 +1,33 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES6",
+//     "module": "commonjs",
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "allowImportingTsExtensions": true,
+//     "emitDeclarationOnly": true,
+//     "declaration": true,
+//     "outDir": "./dist",
+//     "strict": true
+//   },
+//   "include": ["**.ts", "models/oauth_google.ts"],
+//   "exclude": ["node_modules"]
+// }
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "declaration": true,
+    "emitDeclarationOnly": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true,
-    "declaration": true,
-    "outDir": "./dist",
     "strict": true
   },
-  "include": ["**.ts", "models/oauth_google.ts"],
+  "include": ["**/*.ts", "models/oauth_google.ts"],
   "exclude": ["node_modules"]
 }
