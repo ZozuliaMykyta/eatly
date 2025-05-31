@@ -1,18 +1,24 @@
 import { IDishes } from "@/interfaces/IDishes";
 import { IRestaurants } from "@/interfaces/IRestaurants";
+import { IUser } from "@/interfaces/IUser";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const eatlyApi = createApi({
   reducerPath: "eatlyApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  baseQuery: fetchBaseQuery({}),
   endpoints: (builder) => ({
     getRestaurants: builder.query<IRestaurants[], void>({
-      query: () => "restaurants",
+      query: () => "http://localhost:5000/restaurants",
     }),
     getDishes: builder.query<IDishes[], void>({
-      query: () => "dishes",
+      query: () => "http://localhost:5000/dishes",
+    }),
+    getUser: builder.query<IUser[], void>({
+      query: () =>
+        "https://moved-duckling-hip.ngrok-free.app/auth/google/callback",
     }),
   }),
 });
 
-export const { useGetRestaurantsQuery, useGetDishesQuery } = eatlyApi;
+export const { useGetRestaurantsQuery, useGetDishesQuery, useGetUserQuery } =
+  eatlyApi;
