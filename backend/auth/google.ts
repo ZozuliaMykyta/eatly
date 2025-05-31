@@ -19,9 +19,7 @@ async function verify(
 ) {
   try {
     let user = await User.findOne({
-      where: {
-        googleId: profile.id,
-      },
+      googleId: profile.id,
     });
     if (!user) {
       // create new user if doesn't exist

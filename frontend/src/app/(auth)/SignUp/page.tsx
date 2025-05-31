@@ -1,10 +1,28 @@
+"use client";
 import AuthBtns from "@/components/auth/AuthBtns";
 import SignUpForm from "@/components/auth/SignUpForm";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const page = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const accessToken = searchParams.get("accessToken");
+
+    if (accessToken) {
+      console.log("Access token:", accessToken);
+      localStorage.setItem("accessToken", accessToken);
+      setToken(accessToken);
+
+      // убираем accessToken из URL
+      router.replace("/");
+    }
+  }, [searchParams, router]);
   return (
     <div className="flex justify-between min-h-screen">
       <div className="relative px-[48px] pt-[32px] pb-[48px] flex flex-col flex-[53%]">
