@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import foodImage from "@/assets/img/auth/auth-demonstr.png";
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -62,8 +63,16 @@ const page = () => {
           </h5>
         </div>
       </div>
-      <div className="relative bg-purple flex-[47%]">
-        <h2>Find Foods With Love</h2>
+      <div className="relative bg-purple flex-[47%] text-center flex flex-col justify-center items-center">
+        <Image src={foodImage} alt="food image" className="mr-[-65px]"></Image>
+        <h2 className="text-[40px] text-white font-manrope font-extrabold leading-[110%] mt-[50px]">
+          Find Foods With Love
+        </h2>
+        <p className="text-[14px] text-white font-manrope font-medium leading-[150%] mt-[20px] max-w-[500px]">
+          Eatly Is The Food Delivery Dashboard And Having More Than 2K+ Dishes
+          Including Asian, Chinese, Italians And Many More. Our Dashboard Helps
+          You To Manage Orders And Money.
+        </p>
       </div>
     </div>
   );
