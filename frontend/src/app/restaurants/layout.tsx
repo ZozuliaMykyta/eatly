@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StoreProvider from "../StoreProvider";
 
 export const metadata: Metadata = {
   title: "Eatly",
@@ -14,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <StoreProvider>
+          <div className="wrapper">{children}</div>
+        </StoreProvider>
+      </body>
     </html>
   );
 }

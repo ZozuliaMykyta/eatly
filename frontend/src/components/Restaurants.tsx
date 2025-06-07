@@ -47,8 +47,8 @@ const Restaurants = () => {
         </h3>
         <div className="mt-[50px] md:mt-[86px] grid grid-rows-3 min-[900px]:grid-rows-1 grid-cols-1 min-[900px]:grid-cols-3 justify-between gap-[30px] items-center">
           {data?.slice(0, 3).map((item) => (
-            <div
-              onClick={() => router.push(`/restaurants/${item._id}`)}
+            <Link
+              href={`/restaurants/${item._id}`}
               key={item._id}
               style={{
                 boxShadow:
@@ -106,7 +106,7 @@ const Restaurants = () => {
                   />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="text-center min-[900px]:text-right mt-[65px]">

@@ -1,4 +1,5 @@
 import React from "react";
+import RestaurandCard from "./RestaurandCard";
 
 export default async function page({
   params,
@@ -6,5 +7,9 @@ export default async function page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <div>My Post: {slug}</div>;
+  return (
+    <div>
+      <RestaurandCard slug={slug}></RestaurandCard>
+    </div>
+  );
 }
