@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import StoreProvider from "../StoreProvider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Eatly",
@@ -18,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StoreProvider>
-          <div className="wrapper">{children}</div>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
         </StoreProvider>
       </body>
     </html>
