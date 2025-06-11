@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import plus from "@/assets/img/icons/plus.svg";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
+import DishesCards from "./DishesCards";
 
 const Dishes = () => {
   const { data, error, isLoading } = useGetDishesQuery();
@@ -55,7 +56,7 @@ const Dishes = () => {
         <h3 className="capitalize text-[45px] leading-[45px] text-center">
           our top <span className="text-purple">dishes</span>
         </h3>
-        <div className="flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-[14px] min-w-[1100px]:gap-[30px] mt-[50px] lg:mt-[76px]">
+        {/* <div className="flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-[14px] min-w-[1100px]:gap-[30px] mt-[50px] lg:mt-[76px]">
           {data?.map((item) => (
             <div
               key={item._id}
@@ -122,7 +123,8 @@ const Dishes = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
+        <DishesCards />
         <div className="text-center lg:text-right mt-[65px]">
           <Link
             className="font-medium leading-[45px] transition-all duration-300 text-[rgb(172,173,185)] hover:text-black"
