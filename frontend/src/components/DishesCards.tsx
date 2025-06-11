@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import plus from "@/assets/img/icons/plus.svg";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import Link from "next/link";
 
 const DishesCards = () => {
   const { data, error, isLoading } = useGetDishesQuery();
@@ -80,7 +79,7 @@ const DishesCards = () => {
           >
             {item.theme}
           </h6>
-          <h5 className="mt-[5px] text-[rgb(50,49,66)] text-[23px] leading-[37px]">
+          <h5 className="mt-[5px] font-semibold text-[rgb(50,49,66)] text-[23px] leading-[37px]">
             {item.title}
           </h5>
           <div className="flex items-center gap-1.5">

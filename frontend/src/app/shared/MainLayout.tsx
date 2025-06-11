@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import React from "react";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 import "../globals.css";
+import Header from "@/components/Header";
 import StoreProvider from "../StoreProvider";
-import MainLayout from "../shared/MainLayout";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,30 +29,24 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export const metadata: Metadata = {
-  title: "Eatly",
-  icons: {
-    icon: "/assets/img/favicon.svg",
-  },
-};
-
-export default function AuthLayout({
+export default function MainLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  return <MainLayout>{children}</MainLayout>;
-  // return (
-  //   <html lang="en">
-  //     <body
-  //       className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
-  //     >
-  //       <StoreProvider>
-  //         <div className="wrapper">
-  //           <main className="flex-grow">{children}</main>
-  //         </div>
-  //       </StoreProvider>
-  //     </body>
-  //   </html>
-  // );
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
+      >
+        <StoreProvider>
+          <div className="wrapper">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </StoreProvider>
+      </body>
+    </html>
+  );
 }
