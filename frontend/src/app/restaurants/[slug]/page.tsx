@@ -1,6 +1,7 @@
 import React from "react";
 import RestaurandCard from "./RestaurandCard";
 import Popular from "@/components/restaurants/Popular";
+import Questions from "@/components/Questions";
 
 export default async function page({
   params,
@@ -12,6 +13,7 @@ export default async function page({
     <div>
       <RestaurandCard slug={slug}></RestaurandCard>
       <Popular />
+      <Questions />
     </div>
   );
 }
