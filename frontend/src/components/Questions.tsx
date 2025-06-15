@@ -46,8 +46,8 @@ const Questions = () => {
     }));
   };
   return (
-    <div className="container !mt-[120px] text-center">
-      <h2 className="relative inline-block text-[32px] leading-[120%] capitalize text-center">
+    <div className="container !mt-[60px] sm:!mt-[120px] text-center">
+      <h2 className="relative inline-block text-[24px] sm:text-[32px] leading-[120%] sm:leading-[120%] capitalize text-center">
         frequently asked
         <br />
         <span className="text-purple"> questions</span>
@@ -56,27 +56,27 @@ const Questions = () => {
           alt="decoration"
           width={41}
           height={39}
-          className="absolute top-[-40px] right-[-50px]"
+          className="absolute top-[-20px] min-[640px]:top-[-40px] right-[-25px] min-[640px]:right-[-50px] max-[640px]:w-[20px] max-[640px]:h-[19px]"
         ></Image>
       </h2>
-      <div className="mt-[80px] text-left">
+      <div className="mt-[40px] sm:mt-[80px] text-left">
         {questionsData.map((data) => (
           <div
             key={data.id}
-            className="relative custom-border-b !pb-[40px] mb-[30px] last:mb-0"
+            className="relative custom-border-b !pb-[20px] sm:!pb-[40px] mb-[5px] min-[470px]:mb-[30px] last:mb-0"
           >
             <h3
-              className="cursor-pointer text-[23px] leading-[60px] text-[rgb(50,49,66)]"
+              className="cursor-pointer min-[320px]:text-[12px] min-[470px]:text-[18px] sm:text-[23px] leading-[46px] sm:leading-[60px] text-[rgb(50,49,66)]"
               onClick={() => toggleList(data.id)}
             >
               {data.question}
             </h3>
             <p
               className={`
-                overflow-hidden transition-all duration-300 ease-in-out text-[20px] leading-[160%] font-normal text-[rgb(104,104,104)]
+                overflow-hidden transition-all duration-300 ease-in-out text-[12px] sm:text-[20px] leading-[120%] sm:leading-[160%] font-normal text-[rgb(104,104,104)]
                 ${
                   openedList[data.id]
-                    ? "max-h-96 opacity-100 scale-100 pointer-events-auto mt-5"
+                    ? "max-h-96 opacity-100 scale-100 pointer-events-auto mt-1 min-[470px]:mt-5"
                     : "max-h-0 opacity-0 scale-95 pointer-events-none mt-0"
                 }
               `}
@@ -84,7 +84,7 @@ const Questions = () => {
               {data.answer}
             </p>
             <div className="absolute top-[16px] right-[13px]">
-              <div className="relative w-[30px] h-[30px] bg-purple rounded-full">
+              <div className="relative w-[16px] sm:w-[30px] h-[16px] sm:h-[30px] bg-purple rounded-full">
                 <div className="absolute top-[50%] left-[50%] translate-[-50%]">
                   {openedList[data.id] ? (
                     <FaMinus className="text-[12px]" color="white" />
