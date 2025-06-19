@@ -15,11 +15,7 @@ async function verify(payload: any, done: DoneFunction) {
   if (!payload?.id || !payload?.jwtSecureCode) {
     return done(null, false);
   }
-  const user = await User.findOne({
-    where: {
-      id: payload.id,
-    },
-  });
+  const user = await User.findOne({ _id: payload.id });
 
   // bad path: User is not found.
   if (!user) {
