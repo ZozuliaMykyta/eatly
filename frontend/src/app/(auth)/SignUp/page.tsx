@@ -35,7 +35,7 @@ const page = () => {
             className="absolute top-6 sm:top-8 md:top-[32px] left-6 sm:left-8 md:left-[48px] z-10"
           />
         </Link>
-        <div className="flex flex-col flex-grow min-h-0 justify-center">
+        <div className="flex flex-col flex-grow min-h-0 justify-center items-center text-center">
           <div className="text-center">
             <h2 className="text-[rgb(50,49,66)] text-2xl sm:text-3xl md:text-[36px] leading-[125%]">
               Sign Up To eatly
