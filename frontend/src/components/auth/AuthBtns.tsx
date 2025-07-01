@@ -1,15 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useRouter, useSearchParams } from "next/navigation";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 const AuthBtns = () => {
   const router = useRouter();
   return (
-    <div className="mt-[48px] flex items-center justify-center gap-5">
+    <div className="mt-[48px]">
       <button
-        className="auth-btn"
+        className="w-full bg-[rgb(245,245,245)] rounded-[13px] text-center flex justify-center items-center flex-col cursor-pointer py-[16px] transition-all duration-300 border-2 border-[rgb(245,245,245)] hover:border-black focus:border-purple focus:outline-none"
         onClick={() => router.push("http://localhost:5000/api/auth/google")}
       >
         <Image
@@ -17,14 +16,6 @@ const AuthBtns = () => {
           alt="google account icon"
           width={27}
           height={28}
-        ></Image>
-      </button>
-      <button className="auth-btn">
-        <Image
-          src="/assets/img/auth/apple.svg"
-          alt="apple id icon"
-          width={26}
-          height={31}
         ></Image>
       </button>
     </div>
