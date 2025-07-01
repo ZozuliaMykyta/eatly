@@ -1,14 +1,11 @@
 import jwt from "jsonwebtoken";
 
-interface GoogleCallbackParams {
+interface callbackParams {
   id: string;
   jwtSecureCode: string;
 }
 
-export function handleGoogleCallback({
-  id,
-  jwtSecureCode,
-}: GoogleCallbackParams) {
+export function handleCallback({ id, jwtSecureCode }: callbackParams) {
   const payload = { id, jwtSecureCode };
   const authToken = jwt.sign(payload, process.env.SECRET_KEY!, {
     expiresIn: "1h",
