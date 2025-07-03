@@ -4,6 +4,7 @@ export interface IUser extends Document {
   googleId: string;
   email?: string;
   fullName?: string;
+  password?: string;
   jwtSecureCode?: string;
 }
 
@@ -11,6 +12,7 @@ const UserSchema = new Schema<IUser>({
   googleId: { type: String, required: true, unique: true },
   email: { type: String },
   fullName: { type: String },
+  password: { type: String },
   jwtSecureCode: { type: String },
 });
 
