@@ -5,7 +5,8 @@ import cors from "cors";
 import restaurantsRoutes from "./routes/restaurantsRoutes.ts";
 import dishesRoutes from "./routes/dishesRoutes.ts";
 import GoogleAuthRoute from "./routes/GoogleAuthRoute.ts";
-import GoogleUserRoute from "./routes/GoogleUserRoute.ts";
+import ProtectedUserRoute from "./routes/ProtectedUserRoute.ts";
+import AuthUserRoute from "./routes/AuthUserRoute.ts";
 
 dotenv.config();
 
@@ -17,9 +18,10 @@ app.use(cors());
 app.use(restaurantsRoutes);
 app.use(dishesRoutes);
 app.use("/api/auth", GoogleAuthRoute);
-app.use("/api/user", GoogleUserRoute);
+app.use("/api/user", ProtectedUserRoute);
+app.use(AuthUserRoute);
 app.get("/", (req: Request, res: Response) => {
-  res.send("welcome to the Google OAuth 2.0 + JWT Node.js app!");
+  res.send("Protected route accessed");
 });
 
 mongoose
