@@ -38,4 +38,4 @@ router.post("/simpleSignIn", async (req: Request, res: Response) => {
   }
 });
 
-router.post;
+export default router;
