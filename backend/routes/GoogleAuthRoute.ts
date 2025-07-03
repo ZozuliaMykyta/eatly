@@ -20,7 +20,7 @@ router.get(
         return;
       }
 
-      const { authToken } = AuthService.handleGoogleCallback({
+      const { authToken } = AuthService.handleCallback({
         id: user.id,
         jwtSecureCode: user.jwtSecureCode,
       });
