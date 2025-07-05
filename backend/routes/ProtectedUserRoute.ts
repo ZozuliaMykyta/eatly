@@ -9,6 +9,7 @@ const router = Router();
 router.get("/", requireJwt, async (req: Request, res: Response) => {
   try {
     const user = req.user as IUser;
+    console.log("User from JWT:", req.user);
 
     const veryVerySecretUserInfo = await UserService.getUser({
       userId: user.id,

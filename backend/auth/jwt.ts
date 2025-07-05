@@ -21,7 +21,10 @@ async function verify(payload: any, done: DoneFunction) {
   if (!user) {
     return done(null, false);
   }
-  if (!bcrypt.compareSync(user.jwtSecureCode, payload.jwtSecureCode)) {
+  // if (!bcrypt.compareSync(user.jwtSecureCode, payload.jwtSecureCode)) {
+  //   return done(null, false);
+  // }
+  if (user.jwtSecureCode !== payload.jwtSecureCode) {
     return done(null, false);
   }
   return done(null, user);

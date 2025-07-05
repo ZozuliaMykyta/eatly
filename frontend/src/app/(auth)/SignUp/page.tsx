@@ -6,12 +6,12 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import foodImage from "@/assets/img/auth/auth-demonstr.png";
+import axios from "axios";
 
 const page = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [token, setToken] = useState<string | null>(null);
-
   useEffect(() => {
     const accessToken = searchParams.get("accessToken");
 
@@ -20,9 +20,17 @@ const page = () => {
       localStorage.setItem("accessToken", accessToken);
       setToken(accessToken);
 
-      router.replace("/");
+      axios
+        .get("http://localhost:5000/api/user", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        })
+        .then((res) => {
+          console.log("User data:", res.data);
+        })
+        .catch((err) => console.error("User fetch error:", err));
     }
   }, [searchParams, router]);
+
   return (
     <div className="flex md:flex-row justify-between min-h-screen">
       <div className="relative px-6 sm:px-8 md:px-[48px] pt-6 sm:pt-8 md:pt-[32px] pb-8 sm:pb-10 md:pb-[48px] flex flex-col w-full md:flex-[53%]">
