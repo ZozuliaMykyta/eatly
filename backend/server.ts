@@ -20,9 +20,6 @@ app.use(dishesRoutes);
 app.use("/api/auth", GoogleAuthRoute);
 app.use("/api/user", ProtectedUserRoute);
 app.use(AuthUserRoute);
-app.get("/", (req: Request, res: Response) => {
-  res.send("Protected route accessed");
-});
 
 mongoose
   .connect(process.env.DATABASE_URL as string)
