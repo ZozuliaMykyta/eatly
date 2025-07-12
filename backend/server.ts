@@ -7,6 +7,7 @@ import dishesRoutes from "./routes/dishesRoutes.ts";
 import GoogleAuthRoute from "./routes/GoogleAuthRoute.ts";
 import ProtectedUserRoute from "./routes/ProtectedUserRoute.ts";
 import AuthUserRoute from "./routes/AuthUserRoute.ts";
+import userRoute from "./routes/userRoute.ts";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 app.use(restaurantsRoutes);
 app.use(dishesRoutes);
+app.use(userRoute);
 app.use("/api/auth", GoogleAuthRoute);
 app.use("/api/user", ProtectedUserRoute);
 app.use(AuthUserRoute);

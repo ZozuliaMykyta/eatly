@@ -13,7 +13,11 @@ export const eatlyApi = createApi({
     getDishes: builder.query<IDishes[], void>({
       query: () => "http://localhost:5000/dishes",
     }),
+    getUser: builder.query<IUser[], void>({
+      query: () => "http://localhost:5000/users",
+    }),
   }),
 });
 
-export const { useGetRestaurantsQuery, useGetDishesQuery } = eatlyApi;
+export const { useGetRestaurantsQuery, useGetDishesQuery, useGetUserQuery } =
+  eatlyApi;
