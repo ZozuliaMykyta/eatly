@@ -1,5 +1,5 @@
 import React from "react";
-import RestaurandCard from "./RestaurandCard";
+import RestaurantCard from "./RestaurantCard";
 import Popular from "@/components/restaurants/Popular";
 import Questions from "@/components/Questions";
 
@@ -11,7 +11,7 @@ export default async function page({
   const { slug } = await params;
   return (
     <div>
-      <RestaurandCard slug={slug}></RestaurandCard>
+      <RestaurantCard slug={slug}></RestaurantCard>
       <Popular />
       <Questions />
     </div>

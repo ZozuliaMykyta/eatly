@@ -11,14 +11,12 @@ import axios from "axios";
 const page = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [token, setToken] = useState<string | null>(null);
   useEffect(() => {
     const accessToken = searchParams.get("accessToken");
 
     if (accessToken) {
       console.log("Access token:", accessToken);
       localStorage.setItem("accessToken", accessToken);
-      setToken(accessToken);
 
       axios
         .get("http://localhost:5000/api/user", {
@@ -26,6 +24,7 @@ const page = () => {
         })
         .then((res) => {
           console.log("User data:", res.data);
+          router.push("user/" + res.data.jwtSecureCode);
         })
         .catch((err) => console.error("User fetch error:", err));
     }
