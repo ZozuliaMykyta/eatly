@@ -1,5 +1,5 @@
 import passportJwt from "passport-jwt";
-import User from "../database/models/User.ts"; // mock user class
+import User from "../database/models/User.ts"; // import User for user verification
 import bcrypt from "bcrypt";
 
 const JwtStrategy = passportJwt.Strategy;
