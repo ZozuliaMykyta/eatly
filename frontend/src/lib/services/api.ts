@@ -13,12 +13,7 @@ export const eatlyApi = createApi({
     getDishes: builder.query<IDishes[], void>({
       query: () => "http://localhost:5000/dishes",
     }),
-    getUser: builder.query<IUser[], void>({
-      query: () =>
-        "https://moved-duckling-hip.ngrok-free.app/auth/google/callback",
-    }),
   }),
 });
 
-export const { useGetRestaurantsQuery, useGetDishesQuery, useGetUserQuery } =
-  eatlyApi;
+export const { useGetRestaurantsQuery, useGetDishesQuery } = eatlyApi;
