@@ -1,5 +1,5 @@
 export interface ISignUp {
-  fullName: string;
   email: string;
+  fullName: string;
   password: string;
 }
