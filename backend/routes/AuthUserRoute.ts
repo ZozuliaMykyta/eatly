@@ -44,7 +44,7 @@ router.post("/simpleSignUp", async (req: Request, res: Response) => {
 
     res.status(201).json({ accessToken: authToken });
   } catch (error) {
-    res.status(500).json({ error: "Registration failed" });
+    res.status(500).json({ message: "Registration failed" });
     return;
   }
 });
