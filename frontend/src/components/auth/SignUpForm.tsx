@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 
 const SignUpForm = () => {
-  const [visiblePassword, setVisiblePassword] = useState(false);
+  const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
   const router = useRouter();
   const {
     register,
@@ -32,14 +33,16 @@ const SignUpForm = () => {
         },
       });
 
-      const userData = userResponse.data;
-      console.log("User Data:", userData);
-
       localStorage.setItem("token", token);
 
       router.push("user/" + decoded.jwtSecureCode);
     } catch (error) {
-      console.error("Signup or fetch user error:", error);
+      if (axios.isAxiosError(error)) {
+        setMessage(error.response?.data?.message || "An error occurred");
+      } else {
+        console.error("Unknown error:", error);
+        alert("An unknown error occurred");
+      }
     }
   };
   return (
@@ -80,7 +83,7 @@ const SignUpForm = () => {
           </svg>
         </div>
         {errors.fullName && (
-          <span className="text-red-600 text-sm mt-1">
+          <span className="inline-block text-red-600 text-sm mt-2">
             {errors.fullName.message}
           </span>
         )}
@@ -117,8 +120,13 @@ const SignUpForm = () => {
             />
           </svg>
         </div>
+        {message && (
+          <span className="inline-block text-red-600 text-sm mt-2">
+            {message}
+          </span>
+        )}
         {errors.email && (
-          <span className="text-red-600 text-sm mt-1">
+          <span className="inline-block text-red-600 text-sm mt-2">
             {errors.email.message}
           </span>
         )}
@@ -195,7 +203,9 @@ const SignUpForm = () => {
           </button>
         </div>
         {errors.password && (
-          <p className="text-red-600 text-sm mt-1">{errors.password.message}</p>
+          <p className="inline-block text-red-600 text-sm mt-2">
+            {errors.password.message}
+          </p>
         )}
       </div>
       <button
