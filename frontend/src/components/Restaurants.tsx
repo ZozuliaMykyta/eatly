@@ -41,7 +41,7 @@ const Restaurants = () => {
         <div className="text-center min-[900px]:text-right mt-[65px]">
           <Link
             className="font-medium leading-[45px] transition-all duration-300 text-[rgb(172,173,185)] hover:text-black"
-            href="#!"
+            href="/menu"
           >
             View All
           </Link>
