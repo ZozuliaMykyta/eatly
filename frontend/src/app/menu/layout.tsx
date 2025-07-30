@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import MainLayout from "../shared/MainLayout";
 
 export const metadata: Metadata = {
