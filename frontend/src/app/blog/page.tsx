@@ -1,7 +1,10 @@
-import React from "react"
-const page: React.FC  = () => {
-    return (
-        <h1>1</h1>
-    );
-}
+import Hero from "@/components/blog/Hero";
+import React from "react";
+const page = () => {
+  return (
+    <>
+      <Hero />
+    </>
+  );
+};
 export default page;
