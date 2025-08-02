@@ -4,9 +4,19 @@ import Image from "next/image";
 import discountImage from "@/assets/img/discount-food.png";
 import discountBg from "@/assets/img/icons/discount-bg.svg";
 
-const Discount = () => {
+type DiscountProps = {
+  uniqueMargin?: boolean;
+};
+
+const Discount: React.FC<DiscountProps> = ({ uniqueMargin = false }) => {
   return (
-    <section className="mb-[170px] mt-[130px] min-[768px]:mt-[220px]">
+    <section
+      className={
+        uniqueMargin
+          ? "mt-[95px]"
+          : "mb-[170px] mt-[130px] min-[768px]:mt-[220px]"
+      }
+    >
       <div className="relative container text-center min-[900px]:text-left">
         <div className="relative overflow-hidden bg-[rgb(108,95,188)] rounded-[30px] pt-[36px] pb-[60px] px-[68px]">
           <h2 className="relative z-10 uppercase text-[36px] leading-[62px] sm:text-[50px] sm:leading-[75px] min-[900px]:text-[70px] font-extrabold min-[900px]:leading-[105px] text-white mb-[9px]">
