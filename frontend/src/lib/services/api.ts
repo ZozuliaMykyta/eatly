@@ -1,3 +1,4 @@
+import { IArticles } from "@/interfaces/IArticles";
 import { IDishes } from "@/interfaces/IDishes";
 import { IRestaurants } from "@/interfaces/IRestaurants";
 import { IUser } from "@/interfaces/IUser";
@@ -16,8 +17,15 @@ export const eatlyApi = createApi({
     getUser: builder.query<IUser[], void>({
       query: () => "http://localhost:5000/users",
     }),
+    getArticles: builder.query<IArticles[], void>({
+      query: () => "http://localhost:5000/articles",
+    }),
   }),
 });
 
-export const { useGetRestaurantsQuery, useGetDishesQuery, useGetUserQuery } =
-  eatlyApi;
+export const {
+  useGetRestaurantsQuery,
+  useGetDishesQuery,
+  useGetUserQuery,
+  useGetArticlesQuery,
+} = eatlyApi;
