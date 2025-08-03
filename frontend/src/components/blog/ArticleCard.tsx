@@ -8,7 +8,12 @@ type ArticleProps = {
 };
 const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
-    <div>
+    <div
+      className="inline-block bg-white rounded-[16px] pt-6 pb-7 px-5"
+      style={{
+        boxShadow: "0px 3.91px 46.86px 0px rgba(197, 197, 197, 0.25)",
+      }}
+    >
       <div className="relative max-h-[250px] aspect-[310/272]">
         <Image
           src={article.img}
@@ -18,17 +23,17 @@ const Article: React.FC<ArticleProps> = ({ article }) => {
           className="object-cover"
         />
       </div>
-      <h4 className="text-[rgb(37,37,37)] text-[21px] leading-[25px]">
+      <h4 className="text-[rgb(37,37,37)] text-[21px] leading-[25px] mt-[22px]">
         {article.article}
       </h4>
-      <div>
-        <div>
+      <div className="mt-[20px] flex items-end justify-between">
+        <div className="flex items-center gap-2.5">
           <Image src={personAvatar} alt="Person's avatar" />
           <div>
-            <span className="text-[gb(141,141,141)] text-[12px] font-normal leading-[18px]">
+            <span className="text-[rgb(141,141,141)] text-[12px] font-normal leading-[18px]">
               Written By
             </span>
-            <h6 className="mt-0.5 text-black text-[17px] leading-[26px] font-medium">
+            <h6 className="text-black text-[17px] leading-[26px] font-medium">
               Perperzon
             </h6>
           </div>
