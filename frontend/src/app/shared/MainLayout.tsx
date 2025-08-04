@@ -5,6 +5,7 @@ import StoreProvider from "../StoreProvider";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import Footer from "@/components/Footer";
 
 const poppins = Poppins({
