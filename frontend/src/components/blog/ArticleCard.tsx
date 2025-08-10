@@ -9,7 +9,7 @@ type ArticleProps = {
 const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
     <div
-      className="inline-block bg-white rounded-[16px] pt-6 pb-7 px-5"
+      className="inline-block bg-white rounded-[16px] pt-6 pb-7 px-5 text-left"
       style={{
         boxShadow: "0px 3.91px 46.86px 0px rgba(197, 197, 197, 0.25)",
       }}
