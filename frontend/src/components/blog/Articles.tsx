@@ -9,8 +9,8 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 const Articles: React.FC = () => {
   const { data, error, isLoading } = useGetArticlesQuery();
   return (
-    <div className="container !mt-[105px]">
-      <h2 className="text-center text-[45px] leading-[120%]">
+    <div className="container !mt-[150px] min-[500px]:!mt-[210px] min-[900px]:!mt-[105px]">
+      <h2 className="text-center text-[25px] min-[500px]:text-[45px] leading-[120%]">
         Latest <span className="text-purple">Articles</span>
       </h2>
       <Swiper
@@ -21,22 +21,22 @@ const Articles: React.FC = () => {
         }}
         spaceBetween={46}
         slidesPerView={3}
-        // onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
         grabCursor={true}
-        className="justify-center items-center text-center mt-[70px]"
-        // breakpoints={{
-        //   320: {
-        //     slidesPerView: 1,
-        //     spaceBetween: 32,
-        //   },
-        //   600: {
-        //     slidesPerView: 1.3,
-        //   },
-        //   1024: {
-        //     slidesPerView: 2,
-        //     spaceBetween: 46,
-        //   },
-        // }}
+        className="justify-center items-center text-center mt-[20px] min-[500px]:mt-[70px]"
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 32,
+          },
+          720: {
+            slidesPerView: 2,
+            spaceBetween: 32,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 46,
+          },
+        }}
       >
         {data &&
           data.map((article) => (
@@ -44,7 +44,7 @@ const Articles: React.FC = () => {
               <Article article={article} />
             </SwiperSlide>
           ))}
-        <div className="flex justify-center items-center gap-8 mt-[100px]">
+        <div className="flex justify-center items-center gap-8 mt-[50px] min-[500px]:mt-[100px]">
           <FaArrowLeft className="article-btns article-prev text-4xl" />
           <FaArrowRight className="article-btns article-next text-4xl" />
         </div>

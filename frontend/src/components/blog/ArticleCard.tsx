@@ -14,7 +14,7 @@ const Article: React.FC<ArticleProps> = ({ article }) => {
         boxShadow: "0px 3.91px 46.86px 0px rgba(197, 197, 197, 0.25)",
       }}
     >
-      <div className="relative max-h-[250px] aspect-[310/272]">
+      <div className="relative h-[250px] aspect-[310/272]">
         <Image
           src={article.img}
           alt="Article's image"
