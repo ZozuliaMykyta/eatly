@@ -8,6 +8,28 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 
 const Articles: React.FC = () => {
   const { data, error, isLoading } = useGetArticlesQuery();
+
+  if (isLoading) {
+    return (
+      <div className="container text-center custom-border-b !mt-[150px] min-[500px]:!mt-[210px] min-[900px]:!mt-[105px] ">
+        <h3 className="capitalize text-center text-[45px] leading-[45px]">
+          Latest <span className="text-purple">Articles</span>
+        </h3>
+        <h5 className="mt-5">Loading..</h5>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="container text-center custom-border-b !mt-[150px] min-[500px]:!mt-[210px] min-[900px]:!mt-[105px]">
+        <h3 className="capitalize text-center text-[45px] leading-[45px]">
+          Latest <span className="text-purple">Articles</span>
+        </h3>
+        <h5 className="mt-5">Something went wrong</h5>
+      </div>
+    );
+  }
+
   return (
     <div className="container !mt-[150px] min-[500px]:!mt-[210px] min-[900px]:!mt-[105px]">
       <h2 className="text-center text-[25px] min-[500px]:text-[45px] leading-[120%]">
