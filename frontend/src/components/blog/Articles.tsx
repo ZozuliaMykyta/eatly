@@ -23,7 +23,7 @@ const Articles: React.FC = () => {
         slidesPerView={3}
         // onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
         grabCursor={true}
-        className="justify-center items-center text-center"
+        className="justify-center items-center text-center mt-[70px]"
         // breakpoints={{
         //   320: {
         //     slidesPerView: 1,
@@ -44,11 +44,9 @@ const Articles: React.FC = () => {
               <Article article={article} />
             </SwiperSlide>
           ))}
-        <div className="article-prev">
-          <FaArrowLeft />
-        </div>
-        <div className="article-next">
-          <FaArrowRight />
+        <div className="flex justify-center items-center gap-8 mt-[100px]">
+          <FaArrowLeft className="article-btns article-prev text-4xl" />
+          <FaArrowRight className="article-btns article-next text-4xl" />
         </div>
       </Swiper>
     </div>

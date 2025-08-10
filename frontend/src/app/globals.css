@@ -35,3 +35,9 @@
 .auth-input {
   @apply w-full py-[24px] pl-[77px] pr-[27px] text-purple border-2 border-[rgb(245,245,245)] text-[16px] leading-[25px] bg-[rgb(245,245,245)] rounded-[14px] transition-all duration-300 focus:outline-none focus:border-purple placeholder:text-[rgb(194,195,203)] placeholder:font-semibold;
 }
+.article-btns.swiper-button-disabled {
+  color: gray;
+}
+.article-btns {
+  transition: all 0.3s ease;
+}
