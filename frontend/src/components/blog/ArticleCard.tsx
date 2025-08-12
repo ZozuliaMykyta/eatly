@@ -2,13 +2,15 @@ import { IArticles } from "@/interfaces/IArticles";
 import Image from "next/image";
 import React from "react";
 import personAvatar from "@/assets/img/blog/icons/articlePerson.svg";
+import Link from "next/link";
 
 type ArticleProps = {
   article: IArticles;
 };
 const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
-    <div
+    <Link
+      href={`blogs/${article._id}`}
       className="inline-block bg-white rounded-[16px] pt-6 pb-7 px-5 text-left"
       style={{
         boxShadow: "0px 3.91px 46.86px 0px rgba(197, 197, 197, 0.25)",
@@ -42,7 +44,7 @@ const Article: React.FC<ArticleProps> = ({ article }) => {
           15 dec, 2022
         </h6>
       </div>
-    </div>
+    </Link>
   );
 };
 
