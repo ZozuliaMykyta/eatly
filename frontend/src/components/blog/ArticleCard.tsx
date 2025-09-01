@@ -10,7 +10,7 @@ type ArticleProps = {
 const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
     <Link
-      href={`blogs/${article._id}`}
+      href={`/blogs/${article._id}`}
       className="inline-block bg-white rounded-[16px] pt-4 md:pt-6 pb-5 md:pb-7 px-4 md:px-5 text-left w-full max-w-none"
       style={{
         boxShadow: "0px 3.91px 46.86px 0px rgba(197, 197, 197, 0.25)",
