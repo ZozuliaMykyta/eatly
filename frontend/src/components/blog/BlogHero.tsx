@@ -29,7 +29,7 @@ const BlogHero = ({ slug }: { slug: string }) => {
   return (
     <div>
       <h1 className="capitalize text-2xl md:text-3xl lg:text-[37px] leading-tight">
-        how to order good in eatly?
+        {article.article}
       </h1>
       <div className="flex items-center gap-2.5 mt-6 md:mt-8">
         <Image

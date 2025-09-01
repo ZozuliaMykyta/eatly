@@ -4,6 +4,7 @@ interface IArticles extends Document {
   _id: string;
   article: string;
   img: string;
+  titles: Array<string>;
 }
 
 const ArticlesSchema = new Schema<IArticles>({
@@ -17,6 +18,10 @@ const ArticlesSchema = new Schema<IArticles>({
   },
   img: {
     type: String,
+    required: true,
+  },
+  titles: {
+    type: [String],
     required: true,
   },
 });
