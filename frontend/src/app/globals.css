@@ -42,6 +42,3 @@
   transition: all 0.3s ease;
   cursor: pointer;
 }
-.custom-border-l {
-  @apply border-l-[1px] border-l-[#9B9B9B] pl-[46px] pt-2 pb-2;
-}
