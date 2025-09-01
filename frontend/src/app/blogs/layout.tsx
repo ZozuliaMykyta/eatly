@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import MainLayout from "../shared/MainLayout";
 
 export const metadata: Metadata = {
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RestaurantsLayout({
+export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return <MainLayout>{children}</MainLayout>;
 }

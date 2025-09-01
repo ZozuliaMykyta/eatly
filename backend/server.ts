@@ -8,6 +8,7 @@ import GoogleAuthRoute from "./routes/GoogleAuthRoute.ts";
 import ProtectedUserRoute from "./routes/ProtectedUserRoute.ts";
 import AuthUserRoute from "./routes/AuthUserRoute.ts";
 import userRoute from "./routes/userRoute.ts";
+import ArticlesRoute from "./routes/ArticlesRoute.ts";
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(userRoute);
 app.use("/api/auth", GoogleAuthRoute);
 app.use("/api/user", ProtectedUserRoute);
 app.use("/api", AuthUserRoute);
+app.use(ArticlesRoute);
 
 mongoose
   .connect(process.env.DATABASE_URL as string)
