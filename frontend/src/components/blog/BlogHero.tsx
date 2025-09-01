@@ -40,14 +40,22 @@ const BlogHero = ({ slug }: { slug: string }) => {
           </h6>
         </div>
       </div>
-      <div className="relative h-[250px] aspect-[310/272] mt-[62px]">
-        <Image
-          src={article.img}
-          alt="Article's image"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 310px"
-          fill
-          className="object-cover"
-        />
+      <div>
+        {article.titles.map((title, key) => (
+          <div key={key}>
+            <h3 className="mt-[90px] leading-[44px] text-[33px] uppercase text-[#252525]">
+              {title}
+            </h3>
+            <p className="mt-[35px] font-normal leading-[44px] text-[#252525] text-[22px]">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
+              aut suscipit impedit esse fugit ipsa debitis, temporibus
+              reprehenderit enim provident aspernatur repellendus dolorum nulla
+              dolorem corrupti necessitatibus et molestiae, inventore tenetur
+              sequi pariatur? Perspiciatis quae sunt, atque iusto a eos! Dolore
+              magni autem fuga vel ab dolorem cupiditate aut eos?
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
