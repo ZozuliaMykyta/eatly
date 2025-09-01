@@ -8,8 +8,8 @@ const TopArticles = () => {
 
   if (isLoading) {
     return (
-      <div className="container text-center !mt-5">
-        <h3 className="mb-[34px] text-[rgb(37,37,37)] text-[30px] leading-[44px]">
+      <div className="text-center">
+        <h3 className="mb-4 md:mb-6 lg:mb-[34px] text-[rgb(37,37,37)] text-lg md:text-xl lg:text-[30px] leading-6 md:leading-8 lg:leading-[44px]">
           Top Articles
         </h3>
         <h5 className="mt-5">Loading..</h5>
@@ -18,8 +18,8 @@ const TopArticles = () => {
   }
   if (error) {
     return (
-      <div className="container text-center !mt-5">
-        <h3 className="mb-[34px] text-[rgb(37,37,37)] text-[30px] leading-[44px]">
+      <div className="text-center">
+        <h3 className="mb-4 md:mb-6 lg:mb-[34px] text-[rgb(37,37,37)] text-lg md:text-xl lg:text-[30px] leading-6 md:leading-8 lg:leading-[44px]">
           Top Articles
         </h3>
         <h5 className="mt-5">Something went wrong</h5>
@@ -27,11 +27,11 @@ const TopArticles = () => {
     );
   }
   return (
-    <div className="custom-border-l">
-      <h3 className="mb-[34px] text-[rgb(37,37,37)] text-[30px] leading-[44px]">
+    <div className="lg:border-l-[1px] lg:border-l-[#9B9B9B] lg:pl-[46px] lg:pt-2 lg:pb-2">
+      <h3 className="mb-4 md:mb-6 lg:mb-[34px] text-[rgb(37,37,37)] text-lg md:text-xl lg:text-[30px] leading-6 md:leading-8 lg:leading-[44px]">
         Top Articles
       </h3>
-      <div className="flex flex-col gap-14">
+      <div className="flex flex-col gap-4 md:gap-6 lg:gap-14">
         {data &&
           data
             .slice(0, 3)
