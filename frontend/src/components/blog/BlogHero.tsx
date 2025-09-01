@@ -10,14 +10,14 @@ const BlogHero = ({ slug }: { slug: string }) => {
 
   if (isLoading) {
     return (
-      <div className="container text-center custom-border-bx">
+      <div className="container text-center">
         <h5 className="mt-5">Loading..</h5>
       </div>
     );
   }
   if (error) {
     return (
-      <div className="container text-center custom-border-b">
+      <div className="container text-center">
         <h5 className="mt-5">Something went wrong</h5>
       </div>
     );
@@ -27,7 +27,7 @@ const BlogHero = ({ slug }: { slug: string }) => {
   }
 
   return (
-    <div className="container !mt-[126px]">
+    <div className="container">
       <h1 className="capitalize text-[37px] ">how to order good in eatly?</h1>
       <div className="flex items-center gap-2.5 mt-8">
         <Image src={personAvatar} alt="Person's avatar" />
