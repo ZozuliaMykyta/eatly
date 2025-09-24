@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-// import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
 import Page from "@/app/restaurants/[slug]/page";
 
@@ -22,8 +22,8 @@ describe("Restaurants Page", () => {
 
     render(await Page({ params }));
 
-    expect(screen.getByTestId("restaurant-card")).toBeTruthy();
-    expect(screen.getByTestId("popular")).toBeTruthy();
-    expect(screen.getByTestId("questions")).toBeTruthy();
+    expect(screen.getByTestId("restaurant-card")).toBeInTheDocument();
+    expect(screen.getByTestId("popular")).toBeInTheDocument();
+    expect(screen.getByTestId("questions")).toBeInTheDocument();
   });
 });
