@@ -45,7 +45,7 @@ describe("Restaurants Card", () => {
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
   });
   it("should verify restaurant data", () => {
-    const restaurantData = [
+    const restaurantsData = [
       {
         _id: "test-restaurant",
         title: "Test Restaurant",
@@ -56,7 +56,7 @@ describe("Restaurants Card", () => {
     ];
 
     vi.mocked(useGetRestaurantsQuery).mockReturnValue({
-      data: restaurantData,
+      data: restaurantsData,
       error: false,
       isLoading: false,
       isError: false,
