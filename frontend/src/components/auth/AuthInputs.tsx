@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ISignUp } from "@/interfaces/ISignUp";
 
-const AuthInputs = () => {
+type TypeHasName = {
+  hasName: boolean;
+};
+
+const AuthInputs = ({ hasName }: TypeHasName) => {
   const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const {
@@ -13,44 +17,48 @@ const AuthInputs = () => {
   } = useForm<ISignUp>();
   return (
     <>
-      <div>
-        <div className="relative group">
-          <input
-            type="text"
-            className="auth-input"
-            placeholder="FULL NAME"
-            {...register("fullName", {
-              required: "Name is required",
-              minLength: {
-                value: 3,
-                message: "Full name must be at least 3 characters",
-              },
-            })}
-          />
-          <svg
-            className="absolute top-[50%] left-6 translate-y-[-50%]"
-            width="20.567383"
-            height="22.530273"
-            viewBox="0 0 20.5674 22.5303"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              className="group-focus-within:fill-purple transition-all duration-300"
-              id="Icon"
-              d="M10.28 0C7.16 0 4.64 2.52 4.64 5.63C4.64 8.75 7.16 11.27 10.28 11.27C13.39 11.27 15.92 8.75 15.92 5.63C15.92 2.52 13.39 0 10.28 0ZM6.63 5.63C6.63 3.62 8.26 1.99 10.28 1.99C12.29 1.99 13.93 3.62 13.93 5.63C13.93 7.65 12.29 9.28 10.28 9.28C8.26 9.28 6.63 7.65 6.63 5.63ZM4.97 13.26C2.22 13.26 0 15.49 0 18.24L0 19.82C0 20.82 0.72 21.67 1.71 21.83C7.38 22.76 13.17 22.76 18.85 21.83C19.84 21.67 20.56 20.82 20.56 19.82L20.56 18.24C20.56 15.49 18.33 13.26 15.59 13.26L15.13 13.26C14.89 13.26 14.65 13.3 14.41 13.38L13.27 13.75C11.32 14.39 9.23 14.39 7.29 13.75L6.14 13.38C5.91 13.3 5.67 13.26 5.42 13.26L4.97 13.26ZM1.99 18.24C1.99 16.59 3.32 15.25 4.97 15.25L5.42 15.25C5.46 15.25 5.49 15.26 5.53 15.27L6.67 15.65C9.02 16.41 11.54 16.41 13.88 15.65L15.03 15.27C15.06 15.26 15.1 15.25 15.13 15.25L15.59 15.25C17.24 15.25 18.57 16.59 18.57 18.24L18.57 19.82C18.57 19.84 18.55 19.86 18.53 19.87C13.07 20.76 7.49 20.76 2.03 19.87C2 19.86 1.99 19.84 1.99 19.82L1.99 18.24Z"
-              fill="#C2C3CB"
-              fillOpacity="1.000000"
-              fillRule="evenodd"
+      {hasName ? (
+        <div>
+          <div className="relative group">
+            <input
+              type="text"
+              className="auth-input"
+              placeholder="FULL NAME"
+              {...register("fullName", {
+                required: "Name is required",
+                minLength: {
+                  value: 3,
+                  message: "Full name must be at least 3 characters",
+                },
+              })}
             />
-          </svg>
+            <svg
+              className="absolute top-[50%] left-6 translate-y-[-50%]"
+              width="20.567383"
+              height="22.530273"
+              viewBox="0 0 20.5674 22.5303"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                className="group-focus-within:fill-purple transition-all duration-300"
+                id="Icon"
+                d="M10.28 0C7.16 0 4.64 2.52 4.64 5.63C4.64 8.75 7.16 11.27 10.28 11.27C13.39 11.27 15.92 8.75 15.92 5.63C15.92 2.52 13.39 0 10.28 0ZM6.63 5.63C6.63 3.62 8.26 1.99 10.28 1.99C12.29 1.99 13.93 3.62 13.93 5.63C13.93 7.65 12.29 9.28 10.28 9.28C8.26 9.28 6.63 7.65 6.63 5.63ZM4.97 13.26C2.22 13.26 0 15.49 0 18.24L0 19.82C0 20.82 0.72 21.67 1.71 21.83C7.38 22.76 13.17 22.76 18.85 21.83C19.84 21.67 20.56 20.82 20.56 19.82L20.56 18.24C20.56 15.49 18.33 13.26 15.59 13.26L15.13 13.26C14.89 13.26 14.65 13.3 14.41 13.38L13.27 13.75C11.32 14.39 9.23 14.39 7.29 13.75L6.14 13.38C5.91 13.3 5.67 13.26 5.42 13.26L4.97 13.26ZM1.99 18.24C1.99 16.59 3.32 15.25 4.97 15.25L5.42 15.25C5.46 15.25 5.49 15.26 5.53 15.27L6.67 15.65C9.02 16.41 11.54 16.41 13.88 15.65L15.03 15.27C15.06 15.26 15.1 15.25 15.13 15.25L15.59 15.25C17.24 15.25 18.57 16.59 18.57 18.24L18.57 19.82C18.57 19.84 18.55 19.86 18.53 19.87C13.07 20.76 7.49 20.76 2.03 19.87C2 19.86 1.99 19.84 1.99 19.82L1.99 18.24Z"
+                fill="#C2C3CB"
+                fillOpacity="1.000000"
+                fillRule="evenodd"
+              />
+            </svg>
+          </div>
+          {errors.fullName && (
+            <span className="inline-block text-red-600 text-sm mt-2">
+              {errors.fullName.message}
+            </span>
+          )}
         </div>
-        {errors.fullName && (
-          <span className="inline-block text-red-600 text-sm mt-2">
-            {errors.fullName.message}
-          </span>
-        )}
-      </div>
+      ) : (
+        ""
+      )}
       <div>
         <div className="relative group">
           <input

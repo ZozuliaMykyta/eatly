@@ -1,16 +1,15 @@
 "use client";
 import React, { useState } from "react";
+import AuthInputs from "./AuthInputs";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ISignUp } from "@/interfaces/ISignUp";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
-import AuthInputs from "./AuthInputs";
 
-const SignUpForm = () => {
-  // const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+const SignInForm = () => {
   const router = useRouter();
+  const [message, setMessage] = useState<string>("");
   const {
     // register,
     handleSubmit,
@@ -51,15 +50,15 @@ const SignUpForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col mt-[36px] gap-[24px] max-w-[382px] m-auto"
     >
-      <AuthInputs hasName={true} />
+      <AuthInputs hasName={false} />
       <button
         type="submit"
         className="uppercase text-[18px] font-semibold leading-[27px] rounded-[15px] purple-btn h-[74px]"
       >
-        sign up
+        sign in
       </button>
     </form>
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
