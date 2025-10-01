@@ -1,20 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ISignUp } from "@/interfaces/ISignUp";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { ISignUp } from "@/interfaces/IAuth";
 
-type TypeHasName = {
+interface IAuthInputs {
   hasName: boolean;
-};
+  message: string;
+  register: UseFormRegister<ISignUp>;
+  errors: FieldErrors<ISignUp>;
+}
 
-const AuthInputs = ({ hasName }: TypeHasName) => {
+const AuthInputs = ({ hasName, message, register, errors }: IAuthInputs) => {
   const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ISignUp>();
   return (
     <>
       {hasName ? (
@@ -24,13 +21,18 @@ const AuthInputs = ({ hasName }: TypeHasName) => {
               type="text"
               className="auth-input"
               placeholder="FULL NAME"
-              {...register("fullName", {
-                required: "Name is required",
-                minLength: {
-                  value: 3,
-                  message: "Full name must be at least 3 characters",
-                },
-              })}
+              {...register(
+                "fullName",
+                hasName
+                  ? {
+                      required: "Name is required",
+                      minLength: {
+                        value: 3,
+                        message: "Full name must be at least 3 characters",
+                      },
+                    }
+                  : undefined
+              )}
             />
             <svg
               className="absolute top-[50%] left-6 translate-y-[-50%]"
@@ -50,7 +52,7 @@ const AuthInputs = ({ hasName }: TypeHasName) => {
               />
             </svg>
           </div>
-          {errors.fullName && (
+          {hasName && errors.fullName && (
             <span className="inline-block text-red-600 text-sm mt-2">
               {errors.fullName.message}
             </span>

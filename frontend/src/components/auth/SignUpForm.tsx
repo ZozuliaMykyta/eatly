@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ISignUp } from "@/interfaces/ISignUp";
+import { ISignUp } from "@/interfaces/IAuth";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
@@ -12,7 +12,7 @@ const SignUpForm = () => {
   const [message, setMessage] = useState<string>("");
   const router = useRouter();
   const {
-    // register,
+    register,
     handleSubmit,
     formState: { errors },
   } = useForm<ISignUp>();
@@ -51,7 +51,12 @@ const SignUpForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col mt-[36px] gap-[24px] max-w-[382px] m-auto"
     >
-      <AuthInputs hasName={true} />
+      <AuthInputs
+        hasName={true}
+        message={message}
+        register={register}
+        errors={errors}
+      />
       <button
         type="submit"
         className="uppercase text-[18px] font-semibold leading-[27px] rounded-[15px] purple-btn h-[74px]"
