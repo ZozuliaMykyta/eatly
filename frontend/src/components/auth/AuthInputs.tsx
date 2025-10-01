@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
-import { ISignUp } from "@/interfaces/IAuth";
+import { IAuth } from "@/interfaces/IAuth";
 
 interface IAuthInputs {
   hasName: boolean;
   message: string;
-  register: UseFormRegister<ISignUp>;
-  errors: FieldErrors<ISignUp>;
+  register: UseFormRegister<IAuth>;
+  errors: FieldErrors<IAuth>;
 }
 
 const AuthInputs = ({ hasName, message, register, errors }: IAuthInputs) => {

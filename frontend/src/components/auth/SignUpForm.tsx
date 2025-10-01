@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ISignUp } from "@/interfaces/IAuth";
+import { IAuth } from "@/interfaces/IAuth";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
@@ -15,8 +15,8 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ISignUp>();
-  const onSubmit: SubmitHandler<ISignUp> = async (data: ISignUp) => {
+  } = useForm<IAuth>();
+  const onSubmit: SubmitHandler<IAuth> = async (data: IAuth) => {
     try {
       const response = await axios.post(
         "http://localhost:5000/api/simpleSignUp",
