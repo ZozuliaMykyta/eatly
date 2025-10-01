@@ -54,7 +54,7 @@ const page = () => {
             <SignUpForm />
             <h3 className="mt-6 sm:mt-8 md:mt-[24px] capitalize text-base sm:text-lg md:text-[19px] font-bold leading-7">
               already have an account?{" "}
-              <Link href="#!" className="text-purple">
+              <Link href="SignIn" className="text-purple">
                 log in
               </Link>
             </h3>
