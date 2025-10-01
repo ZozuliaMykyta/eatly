@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import restaurantsRoutes from "./routes/restaurantsRoutes.ts";
 import dishesRoutes from "./routes/dishesRoutes.ts";
