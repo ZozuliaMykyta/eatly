@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import AuthInputs from "./AuthInputs";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ISignUp } from "@/interfaces/ISignUp";
+import { IAuth } from "@/interfaces/IAuth";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
@@ -11,14 +11,14 @@ const SignInForm = () => {
   const router = useRouter();
   const [message, setMessage] = useState<string>("");
   const {
-    // register,
+    register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ISignUp>();
-  const onSubmit: SubmitHandler<ISignUp> = async (data: ISignUp) => {
+  } = useForm<IAuth>();
+  const onSubmit: SubmitHandler<IAuth> = async (data: IAuth) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/simpleSignUp",
+        "http://localhost:5000/api/simpleSignIn",
         data
       );
 
@@ -26,12 +26,6 @@ const SignInForm = () => {
       console.log("Access token:", token);
       const decoded = jwtDecode<{ id: string; jwtSecureCode: string }>(token);
       console.log("Decoded JWT:", decoded);
-
-      // const userResponse = await axios.get("http://localhost:5000/api/user", {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // });
 
       localStorage.setItem("token", token);
 
@@ -50,7 +44,12 @@ const SignInForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col mt-[36px] gap-[24px] max-w-[382px] m-auto"
     >
-      <AuthInputs hasName={false} />
+      <AuthInputs
+        hasName={false}
+        message={message}
+        register={register}
+        errors={errors}
+      />
       <button
         type="submit"
         className="uppercase text-[18px] font-semibold leading-[27px] rounded-[15px] purple-btn h-[74px]"
