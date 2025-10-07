@@ -111,26 +111,34 @@ const AuthInputs = ({ hasName, message, register, errors }: IAuthInputs) => {
               type={visiblePassword ? "text" : "password"}
               className="auth-input !pr-[60px]"
               placeholder="PASSWORD"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 8,
-                  message: "Password must be at least 8 characters",
-                },
-                validate: {
-                  hasUpperCase: (value) =>
-                    /[A-Z]/.test(value) ||
-                    "Must contain at least one uppercase letter",
-                  hasLowerCase: (value) =>
-                    /[a-z]/.test(value) ||
-                    "Must contain at least one lowercase letter",
-                  hasNumber: (value) =>
-                    /\d/.test(value) || "Must contain at least one number",
-                  hasSpecialChar: (value) =>
-                    /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
-                    "Must contain at least one special character",
-                },
-              })}
+              {...register(
+                "password",
+                hasName
+                  ? {
+                      required: "Password is required",
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters",
+                      },
+                      validate: {
+                        hasUpperCase: (value: string) =>
+                          /[A-Z]/.test(value) ||
+                          "Must contain at least one uppercase letter",
+                        hasLowerCase: (value: string) =>
+                          /[a-z]/.test(value) ||
+                          "Must contain at least one lowercase letter",
+                        hasNumber: (value: string) =>
+                          /\d/.test(value) ||
+                          "Must contain at least one number",
+                        hasSpecialChar: (value: string) =>
+                          /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                          "Must contain at least one special character",
+                      },
+                    }
+                  : {
+                      required: "Password is required",
+                    }
+              )}
             />
             <svg
               className="absolute top-[50%] left-6 translate-y-[-50%]"
