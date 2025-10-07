@@ -50,13 +50,35 @@ router.post("/simpleSignUp", async (req: Request, res: Response) => {
   }
 });
 
-// router.post("/simpleSignIn", async (req: Request, res: Response) => {
-//   try {
+router.post("/simpleSignIn", async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).json({ message: "Missing email or password" });
+      return;
+    }
 
-//     res.status(200).json(authToken);
-//   } catch (error) {
-//     res.status(500).json({ error: "Sign in failed" });
-//   }
-// });
+    const user = await User.findOne({ email });
+    if (!user || !user.password) {
+      res.status(401).json({ message: "Invalid credentials" });
+      return;
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      res.status(401).json({ message: "Invalid credentials" });
+      return;
+    }
+
+    const { authToken } = AuthService.handleCallback({
+      id: user._id,
+      jwtSecureCode: user.jwtSecureCode,
+    });
+    res.status(200).json({ accessToken: authToken });
+  } catch (error) {
+    console.error("Sign in error:", error);
+    res.status(500).json({ error: "Sign in failed" });
+  }
+});
 
 export default router;
