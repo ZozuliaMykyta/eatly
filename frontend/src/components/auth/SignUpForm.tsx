@@ -8,7 +8,6 @@ import { jwtDecode } from "jwt-decode";
 import AuthInputs from "./AuthInputs";
 
 const SignUpForm = () => {
-  // const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const router = useRouter();
   const {
@@ -24,15 +23,7 @@ const SignUpForm = () => {
       );
 
       const token = response.data.accessToken;
-      console.log("Access token:", token);
       const decoded = jwtDecode<{ id: string; jwtSecureCode: string }>(token);
-      console.log("Decoded JWT:", decoded);
-
-      // const userResponse = await axios.get("http://localhost:5000/api/user", {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // });
 
       localStorage.setItem("token", token);
 
@@ -41,7 +32,6 @@ const SignUpForm = () => {
       if (axios.isAxiosError(error)) {
         setMessage(error.response?.data?.message || "An error occurred");
       } else {
-        console.error("Unknown error:", error);
         alert("An unknown error occurred");
       }
     }

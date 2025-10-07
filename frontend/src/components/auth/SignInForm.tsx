@@ -23,9 +23,7 @@ const SignInForm = () => {
       );
 
       const token = response.data.accessToken;
-      console.log("Access token:", token);
       const decoded = jwtDecode<{ id: string; jwtSecureCode: string }>(token);
-      console.log("Decoded JWT:", decoded);
 
       localStorage.setItem("token", token);
 
@@ -34,7 +32,6 @@ const SignInForm = () => {
       if (axios.isAxiosError(error)) {
         setMessage(error.response?.data?.message || "An error occurred");
       } else {
-        console.error("Unknown error:", error);
         alert("An unknown error occurred");
       }
     }
