@@ -1,5 +1,6 @@
 import React from "react";
 import UserCard from "./UserProfile";
+import Header from "@/components/Header";
 
 export default async function page({
   params,
@@ -9,6 +10,7 @@ export default async function page({
   const { slug } = await params;
   return (
     <div>
+      <Header />
       <UserCard slug={slug}></UserCard>
     </div>
   );

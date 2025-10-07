@@ -1,10 +1,30 @@
 "use client";
+import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 const Header = () => {
   const [isOpenBurger, setIsOpenBurger] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>(null);
+  const [decodedToken, setDecodedToken] = useState<{
+    id: string;
+    jwtSecureCode: string;
+  } | null>(null);
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+    setToken(localStorage.getItem("accessToken"));
+  }, []);
+  useEffect(() => {
+    if (token) {
+      const decodedToken = jwtDecode<{ id: string; jwtSecureCode: string }>(
+        token
+      );
+      setDecodedToken(decodedToken);
+    }
+  }, [token]);
 
   const menuList = [
     {
@@ -54,21 +74,31 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="hidden lg:flex gap-x-[36px] items-center">
+          {token && decodedToken ? (
             <Link
-              href="/SignIn"
-              className="relative text-[18px] text-gray leading-[26px] font-bold capitalize hover:text-purple transition-all duration-300 group"
+              href={`/user/${decodedToken.jwtSecureCode}`}
+              className="hidden lg:flex gap-x-[36px] items-center"
             >
-              <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
-              login
+              <IoPersonCircleSharp className="text-[40px] hover:text-purple transition-all duration-400" />
             </Link>
-            <Link
-              href="/SignUp"
-              className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
-            >
-              sing up
-            </Link>
-          </div>
+          ) : (
+            <div className="hidden lg:flex gap-x-[36px] items-center">
+              <Link
+                href="/SignIn"
+                className="relative text-[18px] text-gray leading-[26px] font-bold capitalize hover:text-purple transition-all duration-300 group"
+              >
+                <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
+                login
+              </Link>
+              <Link
+                href="/SignUp"
+                className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
+              >
+                sing up
+              </Link>
+            </div>
+          )}
+
           <button
             onClick={() => setIsOpenBurger(!isOpenBurger)}
             className="relative flex flex-col items-center justify-center gap-2 lg:hidden z-50 w-9 h-9"
@@ -113,21 +143,33 @@ const Header = () => {
                 ))}
               </ul>
             </nav>
-            <div className="flex flex-col gap-x-[36px] items-center mt-15">
-              <Link
-                href="#!"
-                className="relative text-[18px] text-gray leading-[26px] font-bold capitalize hover:text-purple transition-all duration-300 group mb-5"
-              >
+            {token && decodedToken ? (
+              <div className="mt-[15px] relative group">
+                <Link
+                  className="text-[18px] text-gray leading-[26px] font-inter font-medium capitalize hover:text-purple transition-all duration-300"
+                  href={`/user/${decodedToken.jwtSecureCode}`}
+                >
+                  account
+                </Link>
                 <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
-                login
-              </Link>
-              <Link
-                href="#!"
-                className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
-              >
-                sing up
-              </Link>
-            </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-x-[36px] items-center mt-15">
+                <Link
+                  href="/SignIn"
+                  className="relative text-[18px] text-gray leading-[26px] font-bold capitalize hover:text-purple transition-all duration-300 group mb-5"
+                >
+                  <span className="absolute block w-0 h-0.5 bg-purple bottom-[-5px] left-0 transition-all duration-300 group-hover:w-full"></span>
+                  login
+                </Link>
+                <Link
+                  href="/SignUp"
+                  className="text-[18px] leading-[26px] font-bold capitalize rounded-[18px] py-[17px] px-[25px] purple-btn"
+                >
+                  sing up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
