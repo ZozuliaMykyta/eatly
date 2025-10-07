@@ -14,6 +14,11 @@ const AuthInputs = ({ hasName, message, register, errors }: IAuthInputs) => {
   const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
   return (
     <>
+      {message && (
+        <span className="inline-block text-red-600 text-sm mt-2">
+          {message}
+        </span>
+      )}
       {hasName ? (
         <div>
           <div className="relative group">
@@ -93,11 +98,6 @@ const AuthInputs = ({ hasName, message, register, errors }: IAuthInputs) => {
             />
           </svg>
         </div>
-        {message && (
-          <span className="inline-block text-red-600 text-sm mt-2">
-            {message}
-          </span>
-        )}
         {errors.email && (
           <span className="inline-block text-red-600 text-sm mt-2">
             {errors.email.message}
