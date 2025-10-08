@@ -10,7 +10,6 @@ import {
 } from "react-icons/io5";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import React from "react";
-import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 
 const UserCard = ({ slug }: { slug: string }) => {
@@ -27,7 +26,7 @@ const UserCard = ({ slug }: { slug: string }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-orange-50">
+      <div className="h-[calc(100vh-165px)] flex items-center justify-center">
         <div className="text-center">
           <AiOutlineLoading3Quarters className="animate-spin h-16 w-16 text-purple-600 mx-auto mb-4" />
           <h5 className="text-xl font-semibold text-gray-700">
@@ -40,7 +39,7 @@ const UserCard = ({ slug }: { slug: string }) => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-orange-50">
+      <div className="h-[calc(100vh-165px)] flex items-center justify-center">
         <div className="text-center bg-white p-8 rounded-2xl shadow-xl max-w-md mx-4">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <IoWarning className="w-8 h-8 text-red-500" />
@@ -58,7 +57,7 @@ const UserCard = ({ slug }: { slug: string }) => {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="h-[calc(100vh-165px)] flex items-center justify-center">
         <div className="text-center bg-white p-8 rounded-2xl shadow-xl max-w-md mx-4">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <IoPersonCircleSharp className="w-8 h-8 text-gray-500" />
@@ -75,7 +74,7 @@ const UserCard = ({ slug }: { slug: string }) => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-purple-50 via-white to-orange-50 mt-10">
+    <div className="mt-10">
       <div className="container mx-auto px-4 py-3">
         <div className="max-w-2xl mx-auto">
           {/* Profile Card */}
