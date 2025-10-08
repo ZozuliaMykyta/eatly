@@ -58,7 +58,7 @@ const Footer = () => {
               {footerLinks.map((item) => (
                 <li key={item.id} className="relative group">
                   <Link
-                    href="#!"
+                    href={`/${item.link.toLowerCase()}`}
                     className="uppercase min-[768px]:capitalize text-[18px] leading-[27px] text-[rgb(153,153,153)] hover:text-purple transition-colors duration-300"
                   >
                     {item.link}
