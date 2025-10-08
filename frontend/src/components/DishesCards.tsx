@@ -30,9 +30,6 @@ const DishesCards = () => {
   if (isLoading) {
     return (
       <div className="container text-center custom-border-b">
-        <h3 className="capitalize text-[45px] leading-[45px] text-center">
-          our top <span className="text-purple">dishes</span>
-        </h3>
         <h5 className="mt-5">Loading..</h5>
       </div>
     );
@@ -40,9 +37,6 @@ const DishesCards = () => {
   if (error) {
     return (
       <div className="container text-center custom-border-b">
-        <h3 className="capitalize text-center text-[45px] leading-[45px]">
-          our top <span className="text-purple">restaurants</span>
-        </h3>
         <h5 className="mt-5">Something went wrong</h5>
       </div>
     );
