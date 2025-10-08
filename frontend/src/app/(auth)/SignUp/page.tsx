@@ -3,7 +3,7 @@ import AuthBtns from "@/components/auth/AuthBtns";
 import SignUpForm from "@/components/auth/SignUpForm";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import foodImage from "@/assets/img/auth/auth-demonstr.png";
 import axios from "axios";
