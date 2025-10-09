@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { FaDollarSign } from "react-icons/fa";
 
@@ -7,43 +8,43 @@ const PricingPlans = () => {
       id: 1,
       name: "Support 24/7",
       iconBasic: "/assets/img/pricing/check.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
     {
       id: 2,
       name: "Fast Delivery",
       iconBasic: "/assets/img/pricing/check.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
     {
       id: 3,
       name: "20% Off Food Deals",
       iconBasic: "/assets/img/pricing/check.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
     {
       id: 4,
       name: "Transaction History",
       iconBasic: "/assets/img/pricing/check.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
     {
       id: 5,
       name: "Weekend Deals",
       iconBasic: "/assets/img/pricing/none.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
     {
       id: 6,
       name: "Dashboard Access",
       iconBasic: "/assets/img/pricing/none.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
     {
       id: 7,
       name: "Premium Group Access",
       iconBasic: "/assets/img/pricing/none.svg",
-      iconPremium: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/check.svg",
     },
   ];
   return (
@@ -101,6 +102,49 @@ const PricingPlans = () => {
             <span className="font-inter text-[16px] text-[#6E757C] font-medium leading-[24px] self-end mb-2">
               /month
             </span>
+          </div>
+        </div>
+      </div>
+      <div className="mt-[50px]">
+        <h4 className="mb-[50px] text-[24px] leading-[32px] text-[#272E35]">
+          Core features
+        </h4>
+        <div className="flex justify-between items-center gap-10 mt-[50px]">
+          <div className="flex-[47.5%]">
+            {features.map((feature) => (
+              <h3
+                key={feature.id}
+                className="text-[#606060] text-[22px] font-medium leading-[32px] not-last:mb-[39px]"
+              >
+                {feature.name}
+              </h3>
+            ))}
+          </div>
+          <div className="flex justify-between items-center gap-12 flex-[52.5%]">
+            <div className="flex flex-col flex-[50%]">
+              {features.map((feature) => (
+                <Image
+                  key={feature.id}
+                  src={feature.iconBasic}
+                  alt={feature.name}
+                  width={35}
+                  height={35}
+                  className="not-last:mb-[35px]"
+                />
+              ))}
+            </div>
+            <div className="flex flex-col flex-[50%]">
+              {features.map((feature) => (
+                <Image
+                  key={feature.id}
+                  src={feature.iconPremium}
+                  alt={feature.name}
+                  width={35}
+                  height={35}
+                  className="not-last:mb-[35px]"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
