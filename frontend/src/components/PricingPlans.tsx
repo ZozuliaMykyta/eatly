@@ -57,7 +57,7 @@ const PricingPlans = () => {
           filter: "blur(92.19711303710938px)",
         }}
       />
-      <div className="flex justify-between items-center gap-10">
+      <div className="flex justify-between items-center gap-10 mb-[40px]">
         <div className="flex-[47.5%]">
           <h2 className="text-[40px] text-[#282828] leading-[120%] mb-[25px]">
             Pricing
@@ -85,17 +85,17 @@ const PricingPlans = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center border-[#CBCBCB] border-t-1 border-b-1 py-[40px]">
         <div className="flex-[50%]"></div>
-        <div className="flex justify-between gap-12 mt-[50px] items-center flex-[52.5%]">
-          <div className="flex items-center">
+        <div className="flex gap-12 flex-[52.5%] justify-start">
+          <div className="flex items-center flex-[50%]">
             <FaDollarSign className="text-[48px] text-[#272E35]" />
             <span className="text-[64px] text-[#272E35] leading-[72px]">0</span>
             <span className="font-inter text-[16px] text-[#6E757C] font-medium leading-[24px] self-end mb-2">
               /month
             </span>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center flex-[50%]">
             <FaDollarSign className="text-[48px] text-[#272E35]" />
             <span className="text-[64px] text-[#282828] leading-[72px]">5</span>
             <span className="font-inter text-[16px] text-[#6E757C] font-medium leading-[24px] self-end mb-2">
