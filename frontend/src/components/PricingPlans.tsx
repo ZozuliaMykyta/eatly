@@ -1,6 +1,50 @@
 import React from "react";
 
 const PricingPlans = () => {
+  const features = [
+    {
+      id: 1,
+      name: "Support 24/7",
+      iconBasic: "/assets/img/pricing/check.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+    {
+      id: 2,
+      name: "Fast Delivery",
+      iconBasic: "/assets/img/pricing/check.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+    {
+      id: 3,
+      name: "20% Off Food Deals",
+      iconBasic: "/assets/img/pricing/check.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+    {
+      id: 4,
+      name: "Transaction History",
+      iconBasic: "/assets/img/pricing/check.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+    {
+      id: 5,
+      name: "Weekend Deals",
+      iconBasic: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+    {
+      id: 6,
+      name: "Dashboard Access",
+      iconBasic: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+    {
+      id: 7,
+      name: "Premium Group Access",
+      iconBasic: "/assets/img/pricing/none.svg",
+      iconPremium: "/assets/img/pricing/none.svg",
+    },
+  ];
   return (
     <div className="relative rounded-[15px] bg-[#F9F9F9] pl-[66px] py-[54px] pr-[92px] mt-[66px]">
       <div
