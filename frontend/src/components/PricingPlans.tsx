@@ -1,4 +1,5 @@
 import React from "react";
+import { FaDollarSign } from "react-icons/fa";
 
 const PricingPlans = () => {
   const features = [
@@ -81,6 +82,25 @@ const PricingPlans = () => {
             <h6 className="text-[#6E757C] text-[16px] font-inter font-medium leading-[24px]">
               Amazing Premium Features Plan
             </h6>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-between items-center">
+        <div className="flex-[50%]"></div>
+        <div className="flex justify-between gap-12 mt-[50px] items-center flex-[52.5%]">
+          <div className="flex items-center">
+            <FaDollarSign className="text-[48px] text-[#272E35]" />
+            <span className="text-[64px] text-[#272E35] leading-[72px]">0</span>
+            <span className="font-inter text-[16px] text-[#6E757C] font-medium leading-[24px] self-end mb-2">
+              /month
+            </span>
+          </div>
+          <div className="flex items-center">
+            <FaDollarSign className="text-[48px] text-[#272E35]" />
+            <span className="text-[64px] text-[#282828] leading-[72px]">5</span>
+            <span className="font-inter text-[16px] text-[#6E757C] font-medium leading-[24px] self-end mb-2">
+              /month
+            </span>
           </div>
         </div>
       </div>
