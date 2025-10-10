@@ -7,7 +7,7 @@ const page = () => {
   const { data, error, isLoading } = useGetRestaurantsQuery();
   if (isLoading) {
     return (
-      <div className="container text-center custom-border-bx">
+      <div className="container text-center custom-border-b !mt-9">
         <h3 className="capitalize text-center text-[45px] leading-[45px]">
           our <span className="text-purple">restaurants</span>
         </h3>
@@ -17,7 +17,7 @@ const page = () => {
   }
   if (error) {
     return (
-      <div className="container text-center custom-border-b">
+      <div className="container text-center custom-border-b !mt-9">
         <h3 className="capitalize text-center text-[45px] leading-[45px]">
           our <span className="text-purple">restaurants</span>
         </h3>
