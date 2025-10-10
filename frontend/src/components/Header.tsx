@@ -43,6 +43,10 @@ const Header = () => {
       id: 4,
       link: "contact",
     },
+    {
+      id: 5,
+      link: "cart",
+    },
   ];
   return (
     <header className="header">
