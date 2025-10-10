@@ -105,7 +105,7 @@ const PricingPlans = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[50px]">
+      <div className="mt-[50px] pb-[64px] border-b-1">
         <h4 className="mb-[50px] text-[24px] leading-[32px] text-[#272E35]">
           Core features
         </h4>
@@ -144,6 +144,23 @@ const PricingPlans = () => {
                   className="not-last:mb-[35px]"
                 />
               ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="flex justify-between items-center mt-[44px]">
+          <div className="flex-[50%]"></div>
+          <div className="flex gap-12 flex-[52.5%] justify-start">
+            <div className="flex items-center flex-[50%]">
+              <button className="text-[16px] font-medium leading-[0.488px] purple-btn rounded-xl py-7 px-6">
+                start free
+              </button>
+            </div>
+            <div className="flex items-center flex-[50%]">
+              <button className="text-[16px] font-medium leading-[0.488px] purple-btn rounded-xl py-7 px-6">
+                start Pro
+              </button>
             </div>
           </div>
         </div>
