@@ -21,8 +21,8 @@ const DiscountForm = () => {
   useEffect(() => {
     const checkWidth = () => setIsWide(window.innerWidth > 600);
     checkWidth();
-    addEventListener("resize", checkWidth);
-    return () => removeEventListener("resize", checkWidth);
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
   return (
