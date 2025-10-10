@@ -2,15 +2,21 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
+import blackArrow from "@/assets/img/icons/black-arrow.svg";
 
 const PricingPlans = () => {
   const [isWide, setIsWide] = useState<boolean>(false);
+  const [isFeatureOpened, setIsFeatureOpened] = useState<boolean>(false);
+
   useEffect(() => {
     const checkWidth = () => setIsWide(window.innerWidth > 1024);
     checkWidth();
     window.addEventListener("resize", checkWidth);
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
+
+  const toggleFeature = () => setIsFeatureOpened((prev) => !prev);
+
   const features = [
     {
       id: 1,
@@ -58,7 +64,7 @@ const PricingPlans = () => {
   return (
     <div>
       {isWide ? (
-        <div className="relative rounded-[15px] bg-[#F9F9F9] pl-[66px] py-[54px] pr-[92px] mt-[66px]">
+        <div className="relative rounded-[15px] bg-lighwhite pl-[66px] py-[54px] pr-[92px] mt-[66px]">
           <div
             className="absolute inset-0 -z-10"
             style={{
@@ -181,11 +187,147 @@ const PricingPlans = () => {
           </div>
         </div>
       ) : (
-        <div className="px-4 py-8">
-          <h2 className="text-2xl font-bold text-center mb-6">Pricing</h2>
-          <p className="text-center text-gray-600 mb-8">
-            Affordable Basic & Pro Plans
-          </p>
+        <div className="mt-[58px]">
+          <div className="relative rounded-[15px] bg-lighwhite pl-[24px] py-[30px] pr-[28px]">
+            <div
+              className="absolute inset-0 -z-10"
+              style={{
+                borderRadius: "20.116px",
+                background: "#323142",
+                opacity: 0.15,
+                filter: "blur(92.19711303710938px)",
+              }}
+            />
+            <h3 className="text-[26px] text-[#282828] leading-[120%] mb-[17px]">
+              Basic
+            </h3>
+            <div className="flex items-center border-[#CBCBCB] border-b-1 pb-4">
+              <FaDollarSign className="text-[32px] text-[#272E35]" />
+              <span className="text-[45px] text-[#272E35] leading-[72px]">
+                0
+              </span>
+              <span className="font-inter text-[11px] text-[#6E757C] font-medium leading-[17px] self-end mb-4">
+                /month
+              </span>
+            </div>
+            <h6 className="mt-6 font-inter text-[11px] font-medium leading-[17px] text-[#6E757C]">
+              Completely 100%
+              <br /> Free Plan
+            </h6>
+            <button className="text-[11px] sm:text-[16px] font-medium leading-[0.347px] sm:leading-[0.488px] purple-btn rounded-xl py-6 px-6 mt-[16px]">
+              start free
+            </button>
+            <div className="flex items-center mt-[32px] gap-2.5">
+              <button
+                onClick={toggleFeature}
+                className="text-[#272E35] font-inter text-[13px] sm:text-[16px] leading-5 font-bold"
+              >
+                See features
+              </button>
+              <Image
+                className={`${
+                  isFeatureOpened ? "rotate-180" : ""
+                } transition-transform duration-300`}
+                src={blackArrow}
+                alt="Arrow"
+                width={12}
+                height={8}
+              />
+            </div>
+            <div>
+              {isFeatureOpened && (
+                <div className="mt-6">
+                  {features.map((feature) => (
+                    <div
+                      key={feature.id}
+                      className="flex items-center gap-3 not-last:mb-3"
+                    >
+                      <Image
+                        src={feature.iconBasic}
+                        alt={feature.name}
+                        width={18}
+                        height={18}
+                      />
+                      <p className="text-[11px] sm:text-[16px] font-medium leading-[17px] sm:leading-[24px] text-[#606060]">
+                        {feature.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="mt-6">
+            <div className="relative rounded-[15px] bg-lighwhite pl-[24px] py-[30px] pr-[28px]">
+              <div
+                className="absolute inset-0 -z-10"
+                style={{
+                  borderRadius: "20.116px",
+                  background: "#323142",
+                  opacity: 0.15,
+                  filter: "blur(92.19711303710938px)",
+                }}
+              />
+              <h3 className="text-[26px] text-[#282828] leading-[120%] mb-[17px]">
+                Premium
+              </h3>
+              <div className="flex items-center border-[#CBCBCB] border-b-1 pb-4">
+                <FaDollarSign className="text-[32px] text-[#272E35]" />
+                <span className="text-[45px] text-[#272E35] leading-[72px]">
+                  5
+                </span>
+                <span className="font-inter text-[11px] text-[#6E757C] font-medium leading-[17px] self-end mb-4">
+                  /month
+                </span>
+              </div>
+              <h6 className="mt-6 font-inter text-[11px] font-medium leading-[17px] text-[#6E757C]">
+                Amazing Premium
+                <br /> Features Plan
+              </h6>
+              <button className="text-[11px] sm:text-[16px] font-medium leading-[0.347px] sm:leading-[0.488px] purple-btn rounded-xl py-6 px-6 mt-[16px]">
+                start Pro
+              </button>
+              <div className="flex items-center mt-[32px] gap-2.5">
+                <button
+                  onClick={toggleFeature}
+                  className="text-[#272E35] font-inter text-[13px] sm:text-[16px] leading-5 font-bold"
+                >
+                  See features
+                </button>
+                <Image
+                  className={`${
+                    isFeatureOpened ? "rotate-180" : ""
+                  } transition-transform duration-300`}
+                  src={blackArrow}
+                  alt="Arrow"
+                  width={12}
+                  height={8}
+                />
+              </div>
+              <div>
+                {isFeatureOpened && (
+                  <div className="mt-6">
+                    {features.map((feature) => (
+                      <div
+                        key={feature.id}
+                        className="flex items-center gap-3 not-last:mb-3"
+                      >
+                        <Image
+                          src={feature.iconPremium}
+                          alt={feature.name}
+                          width={18}
+                          height={18}
+                        />
+                        <p className="text-[11px] sm:text-[16px] font-medium leading-[17px] sm:leading-[24px] text-[#606060]">
+                          {feature.name}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
