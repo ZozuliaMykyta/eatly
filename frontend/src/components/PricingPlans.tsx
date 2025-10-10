@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
 
 const PricingPlans = () => {
-  const [isWide, setIsWide] = useState(false);
+  const [isWide, setIsWide] = useState<boolean>(false);
   useEffect(() => {
     const checkWidth = () => setIsWide(window.innerWidth > 1024);
     checkWidth();
