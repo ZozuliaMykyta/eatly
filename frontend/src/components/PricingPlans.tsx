@@ -6,7 +6,10 @@ import blackArrow from "@/assets/img/icons/black-arrow.svg";
 
 const PricingPlans = () => {
   const [isWide, setIsWide] = useState<boolean>(false);
-  const [isFeatureOpened, setIsFeatureOpened] = useState<boolean>(false);
+  const [isBasicFeatureOpened, setIsBasicFeatureOpened] =
+    useState<boolean>(false);
+  const [isPremiumFeatureOpened, setIsPremiumFeatureOpened] =
+    useState<boolean>(false);
 
   useEffect(() => {
     const checkWidth = () => setIsWide(window.innerWidth > 1024);
@@ -15,7 +18,9 @@ const PricingPlans = () => {
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  const toggleFeature = () => setIsFeatureOpened((prev) => !prev);
+  const toggleBasicFeature = () => setIsBasicFeatureOpened((prev) => !prev);
+
+  const togglePremiumFeature = () => setIsPremiumFeatureOpened((prev) => !prev);
 
   const features = [
     {
@@ -219,14 +224,14 @@ const PricingPlans = () => {
             </button>
             <div className="flex items-center mt-[32px] gap-2.5">
               <button
-                onClick={toggleFeature}
+                onClick={toggleBasicFeature}
                 className="text-[#272E35] font-inter text-[13px] sm:text-[16px] leading-5 font-bold"
               >
                 See features
               </button>
               <Image
                 className={`${
-                  isFeatureOpened ? "rotate-180" : ""
+                  isBasicFeatureOpened ? "rotate-180" : ""
                 } transition-transform duration-300`}
                 src={blackArrow}
                 alt="Arrow"
@@ -235,7 +240,7 @@ const PricingPlans = () => {
               />
             </div>
             <div>
-              {isFeatureOpened && (
+              {isBasicFeatureOpened && (
                 <div className="mt-6">
                   {features.map((feature) => (
                     <div
@@ -289,14 +294,14 @@ const PricingPlans = () => {
               </button>
               <div className="flex items-center mt-[32px] gap-2.5">
                 <button
-                  onClick={toggleFeature}
+                  onClick={togglePremiumFeature}
                   className="text-[#272E35] font-inter text-[13px] sm:text-[16px] leading-5 font-bold"
                 >
                   See features
                 </button>
                 <Image
                   className={`${
-                    isFeatureOpened ? "rotate-180" : ""
+                    isPremiumFeatureOpened ? "rotate-180" : ""
                   } transition-transform duration-300`}
                   src={blackArrow}
                   alt="Arrow"
@@ -305,7 +310,7 @@ const PricingPlans = () => {
                 />
               </div>
               <div>
-                {isFeatureOpened && (
+                {isPremiumFeatureOpened && (
                   <div className="mt-6">
                     {features.map((feature) => (
                       <div
