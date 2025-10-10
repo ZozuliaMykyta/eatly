@@ -119,7 +119,7 @@ const PricingPlans = () => {
               </div>
             </div>
           </div>
-          <div className="mt-[50px] pb-[64px] border-b-1">
+          <div className="mt-[50px] pb-[64px] border-[#CBCBCB] border-b-1">
             <h4 className="mb-[50px] text-[24px] leading-[32px] text-[#272E35]">
               Core features
             </h4>
