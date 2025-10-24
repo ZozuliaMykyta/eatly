@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { Provider } from "react-redux";
 import { makeStore, AppStore } from "../lib/store";
+import CartHydration from "@/components/CartHydration";
 
 let store: AppStore | null = null;
 
@@ -19,5 +20,10 @@ export default function StoreProvider({
 }) {
   const storeInstance = getStore();
 
-  return <Provider store={storeInstance}>{children}</Provider>;
+  return (
+    <Provider store={storeInstance}>
+      <CartHydration />
+      {children}
+    </Provider>
+  );
 }
