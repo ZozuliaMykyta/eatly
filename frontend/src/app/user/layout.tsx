@@ -1,4 +1,3 @@
-import StoreProvider from "../StoreProvider";
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 import type { Metadata } from "next";
 import "../globals.css";
@@ -37,16 +36,8 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
-      >
-        <StoreProvider>
-          <div className="wrapper">
-            <main>{children}</main>
-          </div>
-        </StoreProvider>
-      </body>
-    </html>
+    <div className="wrapper">
+      <main>{children}</main>
+    </div>
   );
 }

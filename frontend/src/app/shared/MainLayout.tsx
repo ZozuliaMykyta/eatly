@@ -1,7 +1,6 @@
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
-import StoreProvider from "../StoreProvider";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -35,18 +34,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
-      >
-        <StoreProvider>
-          <div className="wrapper">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </StoreProvider>
-      </body>
-    </html>
+    <div className="wrapper">
+      <Header />
+      <main className="flex-grow">{children}</main>
+      <Footer />
+    </div>
   );
 }

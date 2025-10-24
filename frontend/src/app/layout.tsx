@@ -1,7 +1,7 @@
 import { Poppins, Inter, Manrope, Roboto } from "next/font/google";
+import "./globals.css";
+import StoreProvider from "./StoreProvider";
 import type { Metadata } from "next";
-import "../globals.css";
-import React from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,6 +23,7 @@ const roboto = Roboto({
   weight: ["400", "700"],
   variable: "--font-roboto",
 });
+
 export const metadata: Metadata = {
   title: "Eatly",
   icons: {
@@ -30,14 +31,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AuthLayout({
+export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <div className="wrapper">
-      <main>{children}</main>
-    </div>
+    <html lang="en">
+      <body
+        className={`${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable} font-poppins font-semibold`}
+      >
+        <StoreProvider>{children}</StoreProvider>
+      </body>
+    </html>
   );
 }
