@@ -4,10 +4,23 @@ import Image from "next/image";
 import React, { useState } from "react";
 import plus from "@/assets/img/icons/plus.svg";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { AppDispatch } from "@/lib/store";
+import { useDispatch } from "react-redux";
+import { addItem } from "@/lib/cart/cartSlice";
 
 const DishesCards = () => {
   const { data, error, isLoading } = useGetDishesQuery();
   const [likedItems, setLikedItems] = useState<{ [key: string]: boolean }>({});
+  const dispatch = useDispatch<AppDispatch>();
+
+  const addToCart = (dish: {
+    _id: string;
+    title: string;
+    price: number;
+    image: string;
+  }) => {
+    dispatch(addItem(dish));
+  };
 
   const toggleLiked = (id: string) => {
     setLikedItems((prev) => ({
@@ -69,7 +82,7 @@ const DishesCards = () => {
           ></Image>
           <h6
             className="text-[12px] font-normal leading-[17px] inline-block py-0.5 px-[7px] rounded-[5px] mt-[5px]"
-            style={{ backgroundColor: getThemeBg(item.theme) }}
+            style={{ backgroundColor: getThemeBg(item.title) }}
           >
             {item.theme}
           </h6>
@@ -96,7 +109,10 @@ const DishesCards = () => {
             <div className="text-[18px] font-bold leading-[40px] font-manrope">
               {`$${item.price}`}
             </div>
-            <button className="group  px-[14px] py-[12px] bg-[rgb(50,49,66)] rounded-[9px] cursor-pointer">
+            <button
+              className="group px-[14px] py-[12px] bg-[rgb(50,49,66)] rounded-[9px] cursor-pointer"
+              onClick={() => addToCart(item)}
+            >
               <Image
                 src={plus}
                 alt="plus"
