@@ -1,0 +1,13 @@
+<svg width="45.941406" height="42.315430" viewBox="0 0 45.9414 42.3154" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs/>
+	<rect id="Back" x="3.673828" y="4.978516" rx="6.969510" width="42.267368" height="37.336658" fill="#6C5FBC" fill-opacity="1.000000"/>
+	<rect id="Front" rx="6.969510" width="42.267368" height="37.336658" fill="#DBD9EE" fill-opacity="1.000000"/>
+	<rect id="Front" x="1.007812" y="1.007812" rx="6.969510" width="40.252373" height="35.321663" stroke="#6C5FBC" stroke-opacity="1.000000" stroke-width="2.014994"/>
+	<path id="Vector" d="M32.62 12.05L9.72 11.94" stroke="#6C5FBC" stroke-opacity="1.000000" stroke-width="2.084320" stroke-linejoin="round" stroke-linecap="round"/>
+	<path id="Vector" d="M32.6 16.63L27.51 16.61C25.4 16.6 23.7 14.54 23.71 12.01C23.72 9.47 25.43 7.43 27.54 7.44L32.63 7.46" stroke="#6C5FBC" stroke-opacity="1.000000" stroke-width="2.084320" stroke-linejoin="round" stroke-linecap="round"/>
+	<path id="Vector" d="M10.7 26.64C10.16 26.64 9.7 26.1 9.69 25.45L9.65 23.72C9.63 23.04 10.09 22.46 10.66 22.46L17.25 22.53L17.36 26.72L10.7 26.64Z" stroke="#6C5FBC" stroke-opacity="1.000000" stroke-width="2.084320" stroke-linejoin="round"/>
+	<path id="Vector" d="M18.4 29.09C17.86 29.09 17.4 28.55 17.39 27.89L17.27 22.52L32.55 22.71L32.56 23.39C32.64 26.64 30.5 29.25 27.81 29.21L18.4 29.09Z" stroke="#6C5FBC" stroke-opacity="1.000000" stroke-width="2.084320" stroke-linejoin="round"/>
+</svg>
