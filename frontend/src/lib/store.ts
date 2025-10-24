@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { eatlyApi } from "./services/api";
+import cartReducer from "./cart/cartSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [eatlyApi.reducerPath]: eatlyApi.reducer,
+      cart: cartReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(eatlyApi.middleware),
