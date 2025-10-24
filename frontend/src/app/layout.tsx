@@ -27,7 +27,10 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Eatly",
   icons: {
-    icon: "/assets/img/favicon.svg",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/assets/img/favicon.svg", type: "image/svg+xml" },
+    ],
   },
 };
 
