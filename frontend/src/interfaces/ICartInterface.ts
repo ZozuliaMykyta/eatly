@@ -1,5 +1,6 @@
-export interface ICartProducte {
+export interface ICartProducts {
   id: string;
-  name: string;
+  title: string;
   price: number;
+  image: string;
 }

@@ -1,7 +1,7 @@
-import { ICartProducte } from "@/interfaces/ICartInterface";
+import { ICartProducts } from "@/interfaces/ICartInterface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ICartItem extends ICartProducte {
+interface ICartItem extends ICartProducts {
   quantity: number;
 }
 
