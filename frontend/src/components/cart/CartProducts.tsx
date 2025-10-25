@@ -44,7 +44,7 @@ const CartProducts: React.FC = () => {
                       {item.title}
                     </h4>
                     <h6 className="text-[#323142] text-[18px] leading-[140%] font-semibold">
-                      {item.price}
+                      ${item.price}
                     </h6>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ const CartProducts: React.FC = () => {
                       </button>
                     </div>
                     <h6 className="text-[16px] font-semibold text-[#323142] leading-[140%] mt-2">
-                      {(item.price * item.quantity).toFixed(2)}
+                      ${(item.price * item.quantity).toFixed(2)}
                     </h6>
                   </div>
                   <IoTrashBinOutline

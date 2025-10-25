@@ -14,19 +14,19 @@ const CartReview: React.FC = () => {
             <h6 className="text-[#323142] text-[20px] font-normal leading-[117.5%] opacity-70">
               Subtotal
             </h6>
-            <h6>{totalPrice}</h6>
+            <h6>${totalPrice}</h6>
           </div>
           <div className="flex justify-between items-center mb-6 custom-border-b !pb-2">
             <h6 className="text-[#323142] text-[20px] font-normal leading-[117.5%] opacity-70">
               Delivery
             </h6>
-            <h6>3.59</h6>
+            <h6>$3.59</h6>
           </div>
           <div className="flex justify-between items-center">
             <h4 className="text-[#323142] text-[25px] font-semibold leading-[117.5%]">
               Total
             </h4>
-            <h4>{(totalPrice + 3.59).toFixed(2)}</h4>
+            <h4>${(totalPrice + 3.59).toFixed(2)}</h4>
           </div>
           <button className="mt-14 text-[#FFF3EB] font-semibold text-[20px] purple-btn w-full rounded-[15px] py-3">
             Review Payment
