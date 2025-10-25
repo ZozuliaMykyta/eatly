@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/lib/store";
 import Image from "next/image";
@@ -20,7 +20,14 @@ const CartProducts: React.FC = () => {
         {items.length === 0 ? (
           <p className="text-center">Your cart is empty</p>
         ) : (
-          <ul>
+          <ul className="relative">
+            <Image
+              src="/assets/img/questions-lines.svg"
+              alt="decoration"
+              width={41}
+              height={39}
+              className="absolute top-[-30px] min-[640px]:top-[-45px] right-[-25px] min-[640px]:right-[-40px] max-[640px]:w-[20px] max-[640px]:h-[19px]"
+            ></Image>
             {items.map((item) => (
               <li
                 key={item._id}
