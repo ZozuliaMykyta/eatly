@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { Provider } from "react-redux";
 import { makeStore, AppStore } from "../lib/store";
-import CartHydration from "@/components/CartHydration";
+import CartHydration from "@/components/cart/CartHydration";
 
 let store: AppStore | null = null;
 

@@ -1,4 +1,4 @@
-import CartProducts from "@/components/CartProducts";
+import CartProducts from "@/components/cart/CartProducts";
 import Discount from "@/components/Discount";
 import React from "react";
 
