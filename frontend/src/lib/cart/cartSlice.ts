@@ -1,7 +1,6 @@
 import { ICartProducts } from "@/interfaces/ICartProducts";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Типизированная функция для работы с localStorage
 const getFromLocalStorage = <T>(key: string, defaultValue: T): T => {
   if (typeof window !== "undefined") {
     const item = localStorage.getItem(key);
@@ -86,6 +85,14 @@ const cartSlice = createSlice({
         saveCartToLocalStorage(state);
       }
     },
+    deleteProduct: (state, action: PayloadAction<string>) => {
+      const item = state.items.find((item) => item._id === action.payload);
+      if (item) {
+        state.items = state.items.filter((item) => item._id !== action.payload);
+      }
+      cartSlice.caseReducers.calculateTotal(state);
+      saveCartToLocalStorage(state);
+    },
   },
 });
 
@@ -95,5 +102,6 @@ export const {
   hydrate,
   incrementQuantity,
   decrementQuantity,
+  deleteProduct,
 } = cartSlice.actions;
 export default cartSlice.reducer;
