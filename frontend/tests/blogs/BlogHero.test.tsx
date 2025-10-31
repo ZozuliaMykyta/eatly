@@ -17,6 +17,8 @@ vi.mock("@/lib/services/api", () => ({
   useGetArticlesQuery: vi.fn(),
 }));
 
+type ArticlesQueryType = ReturnType<typeof useGetArticlesQuery>;
+
 describe.skip("Blog Hero Component", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -28,7 +30,8 @@ describe.skip("Blog Hero Component", () => {
       isLoading: true,
       isError: false,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as ArticlesQueryType);
 
     render(<BlogHero slug="test-slug" />);
     expect(screen.getByText("Loading..")).toBeInTheDocument();
@@ -40,7 +43,8 @@ describe.skip("Blog Hero Component", () => {
       isLoading: false,
       isError: true,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as ArticlesQueryType);
 
     render(<BlogHero slug="test-slug" />);
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
