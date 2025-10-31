@@ -16,18 +16,21 @@ vi.mock("@/components/restaurants/RestaurantCard", () => ({
   ),
 }));
 
-describe.skip("Menu Page", () => {
+type RestaurantsQueryType = ReturnType<typeof useGetRestaurantsQuery>;
+
+describe("Menu Page", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
-  it("should render loading state", () => {
+  it.skip("should render loading state", () => {
     vi.mocked(useGetRestaurantsQuery).mockReturnValue({
       data: undefined,
       error: undefined,
       isLoading: true,
       isError: false,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
     render(<Page />);
     expect(screen.getByText("Loading..")).toBeInTheDocument();
   });
@@ -38,7 +41,8 @@ describe.skip("Menu Page", () => {
       isLoading: false,
       isError: true,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
     render(<Page />);
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
   });
@@ -66,7 +70,8 @@ describe.skip("Menu Page", () => {
       isLoading: false,
       isError: false,
       isSuccess: true,
-    } as any);
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
     render(<Page />);
     expect(screen.getAllByTestId("restaurant-card")).toHaveLength(2);
     expect(
