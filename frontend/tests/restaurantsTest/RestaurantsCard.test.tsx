@@ -4,13 +4,17 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import RestaurandCard from "@/app/restaurants/[slug]/RestaurantCard";
 import { useGetRestaurantsQuery } from "@/lib/services/api";
+import { ImageProps } from "next/image";
 
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: (props: any) => {
-    return <img {...props} alt={props.alt || "mocked image"} />;
+  default: (props: ImageProps) => {
+    const src = typeof props.src === "string" ? props.src : "";
+    return <img {...props} src={src} alt={props.alt || "mocked image"} />;
   },
 }));
+
+type RestaurantsQueryType = ReturnType<typeof useGetRestaurantsQuery>;
 
 vi.mock("@/lib/services/api", () => ({
   useGetRestaurantsQuery: vi.fn(),
@@ -27,7 +31,8 @@ describe("Restaurants Card", () => {
       isLoading: true,
       isError: false,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
 
     render(<RestaurandCard slug="test-restaurant" />);
     expect(screen.getByText("Loading..")).toBeInTheDocument();
@@ -39,13 +44,14 @@ describe("Restaurants Card", () => {
       isLoading: false,
       isError: true,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
 
     render(<RestaurandCard slug="test-restaurant" />);
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
   });
   it("should verify restaurant data", () => {
-    const restaurantsData = [
+    const restaurantData = [
       {
         _id: "test-restaurant",
         title: "Test Restaurant",
@@ -56,12 +62,13 @@ describe("Restaurants Card", () => {
     ];
 
     vi.mocked(useGetRestaurantsQuery).mockReturnValue({
-      data: restaurantsData,
+      data: restaurantData,
       error: false,
       isLoading: false,
       isError: false,
-      isSuccess: false,
-    } as any);
+      isSuccess: true,
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
 
     render(<RestaurandCard slug="test-restaurant" />);
     expect(screen.getByText("Test Restaurant")).toBeInTheDocument();
@@ -78,7 +85,8 @@ describe("Restaurants Card", () => {
       isLoading: false,
       isError: false,
       isSuccess: false,
-    } as any);
+      refetch: vi.fn(),
+    } as RestaurantsQueryType);
     render(<RestaurandCard slug="test-restaurant" />);
     expect(screen.getByText("The restaurant not found")).toBeInTheDocument();
   });
