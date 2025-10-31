@@ -19,4 +19,12 @@ describe("Discount Component", () => {
     expect(section).not.toBeNull();
     expect(section?.classList.contains("mt-[95px]")).toBe(true);
   });
+  it("should add mb-[170px] mt-[130px] min-[768px]:mt-[220px] class when uniqueMargin=false", () => {
+    const { container } = render(<Discount uniqueMargin={false} />);
+    const section = container.querySelector("section");
+    expect(section).not.toBeNull();
+    expect(section?.classList.contains("mb-[170px]")).toBe(true);
+    expect(section?.classList.contains("mt-[130px]")).toBe(true);
+    expect(section?.classList.contains("min-[768px]:mt-[220px]")).toBe(true);
+  });
 });
