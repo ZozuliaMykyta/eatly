@@ -72,4 +72,10 @@ describe("ArticlesTest", () => {
   it("should render Article component", () => {
     expect(screen.getByTestId("article-card")).toBeInTheDocument();
   });
+  it("should render swiper and slides", () => {
+    render(<Articles />);
+    expect(screen.getByTestId("swiper")).toBeInTheDocument();
+    const slides = screen.getAllByTestId("swiper-slide");
+    expect(slides.length).toBeGreaterThan(0);
+  });
 });
