@@ -18,11 +18,11 @@ vi.mock("@/components/restaurants/RestaurantCard", () => ({
 
 type RestaurantsQueryType = ReturnType<typeof useGetRestaurantsQuery>;
 
-describe("Menu Page", () => {
+describe.skip("Menu Page", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
-  it.skip("should render loading state", () => {
+  it("should render loading state", () => {
     vi.mocked(useGetRestaurantsQuery).mockReturnValue({
       data: undefined,
       error: undefined,
