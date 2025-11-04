@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IAuth } from "@/interfaces/IAuth";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import { jwtDecode } from "jwt-decode";
 import AuthInputs from "./AuthInputs";
 
 const SignUpForm = () => {
   const [message, setMessage] = useState<string>("");
-  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -22,17 +19,19 @@ const SignUpForm = () => {
         data
       );
 
-      const token = response.data.accessToken;
-      const decoded = jwtDecode<{ id: string; jwtSecureCode: string }>(token);
-
-      localStorage.setItem("token", token);
-
-      router.push("user/" + decoded.jwtSecureCode);
+      // Registration successful, show verification message
+      if (response.data.emailSent) {
+        setMessage(
+          "Registration successful! Please check your email to verify your account."
+        );
+        // Optionally redirect to a verification pending page
+        // router.push("/auth/verification-pending");
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setMessage(error.response?.data?.message || "An error occurred");
       } else {
-        alert("An unknown error occurred");
+        setMessage("An unknown error occurred");
       }
     }
   };

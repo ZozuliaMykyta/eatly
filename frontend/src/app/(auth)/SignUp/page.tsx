@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import foodImage from "@/assets/img/auth/auth-demonstr.png";
 import axios from "axios";
 
-const page = () => {
+const SignUpPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   useEffect(() => {
@@ -88,4 +88,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignUpPage;
