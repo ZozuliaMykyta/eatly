@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import User from "../database/models/User.ts";
 import * as AuthService from "../services/AuthService.ts";
 import { v4 as uuidv4 } from "uuid";
+import sendEmail from "../utils/sendEmail.ts";
+import { verifyEmail } from "../controllers/userVerController.ts";
 
 const router = Router();
 
@@ -31,18 +33,31 @@ router.post("/simpleSignUp", async (req: Request, res: Response) => {
       fullName,
       password: hashedPassword,
       jwtSecureCode,
+      isVerified: false,
     });
 
-    await user.save();
-    console.log("User saved:", user);
+    await user.save({ validateBeforeSave: false });
 
-    const { authToken } = AuthService.handleCallback({
-      id: user._id,
-      jwtSecureCode: user.jwtSecureCode,
+    // Generate verification token
+    const verificationToken = user.getVerificationToken();
+    await user.save({ validateBeforeSave: false });
+
+    const verificationUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/api/verifyemail/${verificationToken}`;
+    const message = `Please verify your email by clicking the following link: ${verificationUrl}`;
+
+    await sendEmail({
+      email: user.email,
+      subject: "Email Verification",
+      message,
     });
-    console.log("Generated authToken:", authToken);
 
-    res.status(201).json({ accessToken: authToken });
+    res.status(201).json({
+      message:
+        "Registration successful. Please check your email to verify your account.",
+      emailSent: true,
+    });
   } catch (error) {
     console.error("Signup error:", error);
     res.status(500).json({ message: "Registration failed" });
@@ -70,6 +85,14 @@ router.post("/simpleSignIn", async (req: Request, res: Response) => {
       return;
     }
 
+    // Check if email is verified
+    if (!user.isVerified) {
+      res
+        .status(401)
+        .json({ message: "Please verify your email before signing in" });
+      return;
+    }
+
     const { authToken } = AuthService.handleCallback({
       id: user._id,
       jwtSecureCode: user.jwtSecureCode,
@@ -80,5 +103,8 @@ router.post("/simpleSignIn", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Sign in failed" });
   }
 });
+
+// Email verification route
+router.get("/verifyemail/:token", verifyEmail);
 
 export default router;
