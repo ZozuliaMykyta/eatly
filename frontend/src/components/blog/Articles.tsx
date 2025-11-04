@@ -36,6 +36,7 @@ const Articles: React.FC = () => {
         Latest <span className="text-purple">Articles</span>
       </h2>
       <Swiper
+        data-testid="swiper"
         modules={[Navigation]}
         navigation={{
           nextEl: ".article-next",
@@ -62,7 +63,7 @@ const Articles: React.FC = () => {
       >
         {data &&
           data.map((article) => (
-            <SwiperSlide key={article._id}>
+            <SwiperSlide key={article._id} data-testid="swiper-slide">
               <Article article={article} />
             </SwiperSlide>
           ))}

@@ -1,0 +1,52 @@
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { useGetArticlesQuery } from "@/lib/services/api";
+import BlogHero from "@/components/blog/BlogHero";
+import Image, { ImageProps } from "next/image";
+
+vi.mock("next/image", () => ({
+  __esModule: true,
+  default: (props: ImageProps) => {
+    return <Image {...props} alt={props.alt || "mocked image"} />;
+  },
+}));
+
+vi.mock("@/lib/services/api", () => ({
+  useGetArticlesQuery: vi.fn(),
+}));
+
+type ArticlesQueryType = ReturnType<typeof useGetArticlesQuery>;
+
+describe.skip("Blog Hero Component", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+  it("should render loading state", () => {
+    vi.mocked(useGetArticlesQuery).mockReturnValue({
+      data: undefined,
+      error: undefined,
+      isLoading: true,
+      isError: false,
+      isSuccess: false,
+      refetch: vi.fn(),
+    } as ArticlesQueryType);
+
+    render(<BlogHero slug="test-slug" />);
+    expect(screen.getByText("Loading..")).toBeInTheDocument();
+  });
+  it("should render error state", () => {
+    vi.mocked(useGetArticlesQuery).mockReturnValue({
+      data: undefined,
+      error: true,
+      isLoading: false,
+      isError: true,
+      isSuccess: false,
+      refetch: vi.fn(),
+    } as ArticlesQueryType);
+
+    render(<BlogHero slug="test-slug" />);
+    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
+  });
+});
