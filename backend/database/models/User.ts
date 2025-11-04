@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
+import { getVerificationToken } from "../../models/userVerModel";
 
 export interface IUser extends Document {
   googleId?: string;
@@ -6,6 +7,10 @@ export interface IUser extends Document {
   fullName: string;
   password?: string;
   jwtSecureCode: string;
+  isVerified: boolean;
+  verificationToken?: string;
+  verificationTokenExpire?: number;
+  getVerificationToken(): string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -14,7 +19,20 @@ const UserSchema = new Schema<IUser>({
   fullName: { type: String },
   password: { type: String },
   jwtSecureCode: { type: String },
+  isVerified: { type: Boolean, default: false },
+  verificationToken: { type: String },
+  verificationTokenExpire: { type: Number },
 });
+
+UserSchema.methods.getVerificationToken = function () {
+  const { token, hashedToken, verificationTokenExpire } =
+    getVerificationToken();
+
+  this.verificationToken = hashedToken;
+  this.verificationTokenExpire = verificationTokenExpire;
+
+  return token;
+};
 
 const User = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
 
