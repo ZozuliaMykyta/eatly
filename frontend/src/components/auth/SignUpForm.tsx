@@ -24,8 +24,6 @@ const SignUpForm = () => {
         setMessage(
           "Registration successful! Please check your email to verify your account."
         );
-        // Optionally redirect to a verification pending page
-        // router.push("/auth/verification-pending");
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
