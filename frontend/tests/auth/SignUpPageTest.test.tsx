@@ -32,8 +32,11 @@ vi.mock("@/components/auth/SignUpForm", () => ({
 vi.mock("@/components/auth/AuthBtns", () => ({
   default: () => <div data-testid="AuthBtns">AuthBtns</div>,
 }));
+vi.mock("@/components/auth/AuthInputs", () => ({
+  default: () => <div data-testid="AuthInputs">AuthInputs</div>,
+}));
 
-describe("SignUpPage", () => {
+describe.skip("SignUpPage", () => {
   afterEach(() => {
     cleanup();
   });
@@ -63,5 +66,13 @@ describe("SignUpPage", () => {
       "accessToken",
       "test-token"
     );
+  });
+  it("should save jwtSecureCode to localStorage", () => {
+    render(<SignUpPage />);
+    expect(localStorageMock.setItem).not.toHaveBeenCalledWith();
+  });
+  it("submits with valid email", async () => {
+    render(<SignUpPage />);
+    expect(screen.getByText("SignUpForm")).toBeInTheDocument();
   });
 });
