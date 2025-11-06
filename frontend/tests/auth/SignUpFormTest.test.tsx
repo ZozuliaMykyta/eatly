@@ -9,8 +9,6 @@ import {
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
-import { http, HttpResponse } from "msw";
-import { server } from "../mocks/node";
 
 vi.mock("@/components/auth/AuthInputs", () => ({
   default: vi.fn(
@@ -25,7 +23,12 @@ vi.mock("@/components/auth/AuthInputs", () => ({
         <div>
           {Object.keys(errors).length > 0 ? `An error occurred` : "No errors"}
         </div>
-        <input type="email" {...register("email")} />
+        <input type="email" {...register("email")} value={"test@gmail.com"} />
+        <input
+          type="password"
+          {...register("password")}
+          value={"testpassword"}
+        />
       </div>
     )
   ),
@@ -47,14 +50,22 @@ describe.skip("SignUpForm", () => {
     });
   });
   it("shows error message when axios throws an error", async () => {
-    server.use(
-      http.post("http://localhost:5000/api/simpleSignUp", () => {
-        return HttpResponse.json(
-          { message: "An error occurred" },
-          { status: 500 }
-        );
-      })
+    // Переопределяем мок AuthInputs для отправки error@test.com
+    const { default: AuthInputs } = await import(
+      "@/components/auth/AuthInputs"
     );
+    const mockAuthInputs = vi.mocked(AuthInputs);
+    mockAuthInputs.mockImplementationOnce(({ hasName, message, register }) => (
+      <div data-testid="AuthInputs">
+        AuthInputs - hasName: {hasName ? "true" : "false"}, message: {message}
+        <input type="email" {...register("email")} value={"error@test.com"} />
+        <input
+          type="password"
+          {...register("password")}
+          value={"testpassword"}
+        />
+      </div>
+    ));
 
     render(<SignUpForm />);
     fireEvent.click(screen.getByText(/sign up/i));
