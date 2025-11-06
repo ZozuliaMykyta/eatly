@@ -28,4 +28,9 @@ export const handlers = [
       accessToken: token,
     });
   }),
+  http.post("http://localhost:5000/api/simpleSignUp", async () => {
+    return HttpResponse.json({
+      emailSent: true,
+    });
+  }),
 ];
