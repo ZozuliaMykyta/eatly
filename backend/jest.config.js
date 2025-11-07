@@ -8,7 +8,4 @@ module.exports = {
   transform: {
     ...tsJestTransformCfg,
   },
-  compilerOptions: {
-    types: ["jest", "node"],
-  },
 };
