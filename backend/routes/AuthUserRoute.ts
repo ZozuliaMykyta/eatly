@@ -42,16 +42,27 @@ router.post("/simpleSignUp", async (req: Request, res: Response) => {
     const verificationToken = user.getVerificationToken();
     await user.save({ validateBeforeSave: false });
 
-    const verificationUrl = `${req.protocol}://${req.get(
-      "host"
-    )}/api/verifyemail/${verificationToken}`;
+    // Use environment variable for base URL or fallback to request host
+    const baseUrl =
+      process.env.BACKEND_URL || `${req.protocol}://${req.get("host")}`;
+    const verificationUrl = `${baseUrl}/api/verifyemail/${verificationToken}`;
     const message = `Please verify your email by clicking the following link: ${verificationUrl}`;
 
-    await sendEmail({
-      email: user.email,
-      subject: "Email Verification",
-      message,
-    });
+    try {
+      console.log("Attempting to send verification email to:", user.email);
+      console.log("Verification URL:", verificationUrl);
+
+      await sendEmail({
+        email: user.email,
+        subject: "Email Verification",
+        message,
+      });
+
+      console.log("Verification email sent successfully");
+    } catch (emailError) {
+      console.error("Failed to send verification email:", emailError);
+      // Don't fail registration if email fails, but log it
+    }
 
     res.status(201).json({
       message:
