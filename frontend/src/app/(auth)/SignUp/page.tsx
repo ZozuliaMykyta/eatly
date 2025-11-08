@@ -19,6 +19,9 @@ const SignUpHandler = () => {
       console.log("Access token:", accessToken);
       localStorage.setItem("accessToken", accessToken);
 
+      // Trigger a storage event to update Header component
+      window.dispatchEvent(new Event("storage"));
+
       import("@/utils/api")
         .then(({ getApiBaseUrl }) => {
           const API_BASE_URL = getApiBaseUrl();
@@ -28,9 +31,13 @@ const SignUpHandler = () => {
         })
         .then((res) => {
           console.log("User data:", res.data);
-          router.push("user/" + res.data.jwtSecureCode);
+          router.push("/user/" + res.data.jwtSecureCode);
         })
-        .catch((err) => console.error("User fetch error:", err));
+        .catch((err) => {
+          console.error("User fetch error:", err);
+          // If user fetch fails, still redirect to home with token
+          router.push("/");
+        });
     }
   }, [searchParams, router]);
 

@@ -14,8 +14,20 @@ const Header = () => {
   } | null>(null);
 
   useEffect(() => {
-    setToken(localStorage.getItem("token"));
-    setToken(localStorage.getItem("accessToken"));
+    // Check both token and accessToken for backward compatibility
+    const storedToken =
+      localStorage.getItem("accessToken") || localStorage.getItem("token");
+    setToken(storedToken);
+
+    // Listen for storage changes (token updates)
+    const handleStorageChange = () => {
+      const updatedToken =
+        localStorage.getItem("accessToken") || localStorage.getItem("token");
+      setToken(updatedToken);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
   useEffect(() => {
     if (token) {
