@@ -9,7 +9,7 @@ describe("AuthUserRoute", () => {
   beforeEach(() => {
     // Reset module cache
     jest.resetModules();
-    
+
     // Create fresh app
     app = express();
     app.use(express.json());
@@ -20,41 +20,44 @@ describe("AuthUserRoute", () => {
     // Add mock routes to the router
     router.post("/simpleSignUp", (req: any, res: any) => {
       const { email, fullName, password } = req.body;
-      
+
       if (!email || !fullName || !password) {
         return res.status(400).json({ message: "Missing required fields" });
       }
-      
+
       // Simulate different scenarios for testing
       if (email === "existing@test.com") {
         return res.status(400).json({ message: "Email already in use" });
       }
-      
+
       res.status(201).json({
-        message: "Registration successful. Please check your email to verify your account.",
+        message:
+          "Registration successful. Please check your email to verify your account.",
         emailSent: true,
       });
     });
 
     router.post("/simpleSignIn", (req: any, res: any) => {
       const { email, password } = req.body;
-      
+
       if (!email || !password) {
         return res.status(400).json({ message: "Missing email or password" });
       }
-      
+
       if (email === "nonexistent@test.com") {
         return res.status(401).json({ message: "Invalid credentials" });
       }
-      
+
       if (password === "wrongpassword") {
         return res.status(401).json({ message: "Invalid credentials" });
       }
-      
+
       if (email === "unverified@test.com") {
-        return res.status(401).json({ message: "Please verify your email before signing in" });
+        return res
+          .status(401)
+          .json({ message: "Please verify your email before signing in" });
       }
-      
+
       res.status(200).json({ accessToken: "mock-jwt-token" });
     });
 
@@ -89,7 +92,8 @@ describe("AuthUserRoute", () => {
 
       expect(response.status).toBe(201);
       expect(response.body).toEqual({
-        message: "Registration successful. Please check your email to verify your account.",
+        message:
+          "Registration successful. Please check your email to verify your account.",
         emailSent: true,
       });
     });
@@ -144,7 +148,9 @@ describe("AuthUserRoute", () => {
         .send({ email: "unverified@test.com", password: "password" });
 
       expect(response.status).toBe(401);
-      expect(response.body.message).toBe("Please verify your email before signing in");
+      expect(response.body.message).toBe(
+        "Please verify your email before signing in"
+      );
     });
 
     it("should return access token for valid credentials", async () => {
