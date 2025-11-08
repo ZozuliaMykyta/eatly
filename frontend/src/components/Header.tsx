@@ -40,10 +40,6 @@ const Header = () => {
       link: "pricing",
     },
     {
-      id: 4,
-      link: "contact",
-    },
-    {
       id: 5,
       link: "cart",
     },

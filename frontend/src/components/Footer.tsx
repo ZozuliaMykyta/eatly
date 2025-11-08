@@ -22,10 +22,6 @@ const Footer = () => {
       id: 3,
       link: "about us",
     },
-    {
-      id: 4,
-      link: "contact",
-    },
   ];
 
   const icons = [
