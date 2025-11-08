@@ -3,14 +3,15 @@ import AuthBtns from "@/components/auth/AuthBtns";
 import SignUpForm from "@/components/auth/SignUpForm";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import foodImage from "@/assets/img/auth/auth-demonstr.png";
 import axios from "axios";
 
-const SignUpPage = () => {
+const SignUpHandler = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  
   useEffect(() => {
     const accessToken = searchParams.get("accessToken");
 
@@ -32,8 +33,16 @@ const SignUpPage = () => {
     }
   }, [searchParams, router]);
 
+  return null;
+};
+
+const SignUpPage = () => {
+
   return (
     <div className="flex md:flex-row justify-between min-h-screen">
+      <Suspense fallback={<div>Loading...</div>}>
+        <SignUpHandler />
+      </Suspense>
       <div className="relative px-6 sm:px-8 md:px-[48px] pt-6 sm:pt-8 md:pt-[32px] pb-8 sm:pb-10 md:pb-[48px] flex flex-col w-full md:flex-[53%]">
         <Link href="/">
           <Image
