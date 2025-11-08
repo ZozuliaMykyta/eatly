@@ -1,75 +1,57 @@
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 
 const sendEmail = async (options: {
   email: string;
   subject: string;
   message: string;
 }) => {
-  // Try different SMTP configurations
-  const configs = [
-    // Gmail direct
-    {
+  try {
+    // Use SendGrid API if available
+    if (process.env.SENDGRID_API_KEY) {
+      console.log("📧 Using SendGrid API to send email");
+
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+      const msg = {
+        to: options.email,
+        from: process.env.FROM_EMAIL || "noreply@eatly.com",
+        subject: options.subject,
+        text: options.message,
+        html: `<p>${options.message.replace(/\n/g, "<br>")}</p>`,
+      };
+
+      await sgMail.send(msg);
+      console.log("✅ Email sent successfully via SendGrid");
+      return;
+    }
+
+    // Fallback to SMTP (probably won't work on Render)
+    console.log("⚠️ SendGrid not configured, falling back to SMTP");
+    const nodemailer = require("nodemailer");
+
+    const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
       secure: false,
-    },
-    // Gmail SSL
-    {
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-    },
-    // Alternative port
-    {
-      host: "smtp.gmail.com",
-      port: 25,
-      secure: false,
-    },
-  ];
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
 
-  let lastError;
+    const mailOptions = {
+      from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
+      to: options.email,
+      subject: options.subject,
+      text: options.message,
+    };
 
-  for (const config of configs) {
-    try {
-      console.log(
-        `Trying SMTP config: ${config.host}:${config.port} (secure: ${config.secure})`
-      );
-
-      const transporter = nodemailer.createTransport({
-        ...config,
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.EMAIL_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-        connectionTimeout: 10000, // 10 seconds
-        greetingTimeout: 5000, // 5 seconds
-        socketTimeout: 10000, // 10 seconds
-      });
-
-      const mailOptions = {
-        from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
-        to: options.email,
-        subject: options.subject,
-        text: options.message,
-      };
-
-      await transporter.sendMail(mailOptions);
-      console.log(
-        `✅ Email sent successfully using ${config.host}:${config.port}`
-      );
-      return; // Success, exit function
-    } catch (error) {
-      console.log(`❌ Failed with ${config.host}:${config.port}:`, error);
-      lastError = error;
-      continue; // Try next config
-    }
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent successfully via SMTP");
+  } catch (error) {
+    console.error("❌ Failed to send email:", error);
+    throw error;
   }
-
-  // If all configs failed, throw the last error
-  throw lastError || new Error("All SMTP configurations failed");
 };
 
 export default sendEmail;
