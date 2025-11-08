@@ -56,16 +56,30 @@ router.post("/simpleSignUp", async (req: Request, res: Response) => {
     try {
       console.log("Attempting to send verification email to:", user.email);
       console.log("Verification URL:", verificationUrl);
+      console.log("Email config:", {
+        service: process.env.EMAIL_SERVICE,
+        username: process.env.EMAIL_USERNAME,
+        fromName: process.env.FROM_NAME,
+        fromEmail: process.env.FROM_EMAIL,
+      });
 
-      await sendEmail({
+      // Add timeout to email sending
+      const emailPromise = sendEmail({
         email: user.email,
         subject: "Email Verification",
         message,
       });
 
-      console.log("Verification email sent successfully");
+      const timeoutPromise = new Promise(
+        (_, reject) =>
+          setTimeout(() => reject(new Error("Email timeout")), 10000) // 10 second timeout
+      );
+
+      await Promise.race([emailPromise, timeoutPromise]);
+
+      console.log("✅ Verification email sent successfully");
     } catch (emailError) {
-      console.error("Failed to send verification email:", emailError);
+      console.error("❌ Failed to send verification email:", emailError);
       // Don't fail registration if email fails, but log it
     }
 
