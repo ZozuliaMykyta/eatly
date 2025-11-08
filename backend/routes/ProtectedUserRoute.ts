@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
-import requireJwt from "../middlewares/requireJwt.ts"; // middleware to authenticate using JWT
-import UserService from "../services/UserService.ts";
-import { IUser } from "../database/models/User.ts";
+import requireJwt from "../middlewares/requireJwt"; // middleware to authenticate using JWT
+import UserService from "../services/UserService";
+import { IUser } from "../database/models/User";
 
 const router = Router();
 

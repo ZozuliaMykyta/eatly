@@ -1,4 +1,4 @@
-import User, { IUser } from "../database/models/User.ts";
+import User, { IUser } from "../database/models/User";
 
 interface GetUserParams {
   userId: string;

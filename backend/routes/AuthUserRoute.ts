@@ -1,10 +1,10 @@
 import { Router, Response, Request } from "express";
 import bcrypt from "bcrypt";
-import User from "../database/models/User.ts";
-import * as AuthService from "../services/AuthService.ts";
+import User from "../database/models/User";
+import * as AuthService from "../services/AuthService";
 import { v4 as uuidv4 } from "uuid";
-import sendEmail from "../utils/sendEmail.ts";
-import { verifyEmail } from "../controllers/userVerController.ts";
+import sendEmail from "../utils/sendEmail";
+import { verifyEmail } from "../controllers/userVerController";
 
 const router = Router();
 

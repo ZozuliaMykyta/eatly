@@ -1,6 +1,6 @@
-import type { Request, Response } from "express";
-import User from "../database/models/User.ts";
-import handleError from "../handleError.ts";
+import { Request, Response } from "express";
+import User from "../database/models/User";
+import handleError from "../handleError";
 
 const getCard = async (req: Request, res: Response): Promise<void> => {
   try {

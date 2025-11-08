@@ -1,5 +1,5 @@
 import express from "express";
-import getRestaurantCard from "../controllers/restaurantsController.ts";
+import getRestaurantCard from "../controllers/restaurantsController";
 
 const router = express.Router();
 

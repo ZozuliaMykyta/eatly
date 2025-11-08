@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
-import passport from "../auth/passport.ts"; // import passport from my custom passport file
-import * as AuthService from "../services/AuthService.ts";
-import { IUser } from "../database/models/User.ts";
+import passport from "../auth/passport"; // import passport from my custom passport file
+import * as AuthService from "../services/AuthService";
+import { IUser } from "../database/models/User";
 
 const router = Router();
 

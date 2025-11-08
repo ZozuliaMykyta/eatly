@@ -2,13 +2,13 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
-import restaurantsRoutes from "./routes/restaurantsRoutes.ts";
-import dishesRoutes from "./routes/dishesRoutes.ts";
-import GoogleAuthRoute from "./routes/GoogleAuthRoute.ts";
-import ProtectedUserRoute from "./routes/ProtectedUserRoute.ts";
-import AuthUserRoute from "./routes/AuthUserRoute.ts";
-import userRoute from "./routes/userRoute.ts";
-import ArticlesRoute from "./routes/ArticlesRoute.ts";
+import restaurantsRoutes from "./routes/restaurantsRoutes";
+import dishesRoutes from "./routes/dishesRoutes";
+import GoogleAuthRoute from "./routes/GoogleAuthRoute";
+import ProtectedUserRoute from "./routes/ProtectedUserRoute";
+import AuthUserRoute from "./routes/AuthUserRoute";
+import userRoute from "./routes/userRoute";
+import ArticlesRoute from "./routes/ArticlesRoute";
 
 dotenv.config();
 
