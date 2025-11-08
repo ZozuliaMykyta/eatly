@@ -23,13 +23,23 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
 ].filter((origin): origin is string => Boolean(origin));
 
+// Temporarily allow all origins for debugging
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: true, // Allow all origins for now
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: false,
   })
 );
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.json({ status: "OK", message: "Eatly Backend is running!" });
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "OK", timestamp: new Date().toISOString() });
+});
+
 app.use(restaurantsRoutes);
 app.use(dishesRoutes);
 app.use(userRoute);

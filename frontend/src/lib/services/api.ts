@@ -7,6 +7,13 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
 
+// Temporary debug log
+console.log("🔧 DEBUG: API_BASE_URL =", API_BASE_URL);
+console.log(
+  "🔧 DEBUG: NEXT_PUBLIC_API_BASE_URL =",
+  process.env.NEXT_PUBLIC_API_BASE_URL
+);
+
 export const eatlyApi = createApi({
   reducerPath: "eatlyApi",
   baseQuery: fetchBaseQuery({
