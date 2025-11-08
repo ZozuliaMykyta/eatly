@@ -18,7 +18,8 @@ const SignUpPage = () => {
       console.log("Access token:", accessToken);
       localStorage.setItem("accessToken", accessToken);
 
-      const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+      const API_BASE_URL =
+        process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
       axios
         .get(`${API_BASE_URL}/api/user`, {
           headers: { Authorization: `Bearer ${accessToken}` },
