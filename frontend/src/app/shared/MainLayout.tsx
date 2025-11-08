@@ -34,7 +34,9 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`wrapper ${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable}`}>
+    <div
+      className={`wrapper ${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable}`}
+    >
       <Header />
       <main className="flex-grow">{children}</main>
       <Footer />

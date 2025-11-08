@@ -48,7 +48,8 @@ const UserCard = ({ slug }: { slug: string }) => {
             Oops! Something went wrong
           </h5>
           <p className="text-gray-600">
-            We&apos;re having trouble loading your profile. Please try again later.
+            We&apos;re having trouble loading your profile. Please try again
+            later.
           </p>
         </div>
       </div>

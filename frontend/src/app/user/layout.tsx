@@ -36,7 +36,9 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`wrapper ${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable}`}>
+    <div
+      className={`wrapper ${poppins.variable} ${inter.variable} ${manrope.variable} ${roboto.variable}`}
+    >
       <main>{children}</main>
     </div>
   );
