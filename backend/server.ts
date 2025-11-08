@@ -12,7 +12,9 @@ import ArticlesRoute from "./routes/ArticlesRoute";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 10000;
+console.log("Environment PORT:", process.env.PORT);
+const PORT = parseInt(process.env.PORT || "10000", 10);
+console.log("Using PORT:", PORT);
 
 const app = express();
 app.use(express.json());
@@ -41,6 +43,6 @@ mongoose
   .then(() => console.log("Connected to DB"))
   .catch((err) => console.log(`DB connection error: ${err}`));
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
 });
