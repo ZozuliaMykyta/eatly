@@ -11,7 +11,7 @@ import axios from "axios";
 const SignUpHandler = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  
+
   useEffect(() => {
     const accessToken = searchParams.get("accessToken");
 
@@ -37,7 +37,6 @@ const SignUpHandler = () => {
 };
 
 const SignUpPage = () => {
-
   return (
     <div className="flex md:flex-row justify-between min-h-screen">
       <Suspense fallback={<div>Loading...</div>}>
