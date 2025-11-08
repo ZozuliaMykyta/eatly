@@ -9,11 +9,16 @@ import { verifyEmail } from "../controllers/userVerController";
 const router = Router();
 
 router.post("/simpleSignUp", async (req: Request, res: Response) => {
+  console.log("🔥 SignUp request received:", req.body);
   try {
     const { email, fullName, password } = req.body;
 
     if (!email || !fullName || !password) {
-      console.log("Missing fields");
+      console.log("❌ Missing fields:", {
+        email: !!email,
+        fullName: !!fullName,
+        password: !!password,
+      });
       res.status(400).json({ message: "Missing required fields" });
       return;
     }
@@ -64,13 +69,14 @@ router.post("/simpleSignUp", async (req: Request, res: Response) => {
       // Don't fail registration if email fails, but log it
     }
 
+    console.log("✅ Registration completed successfully for:", email);
     res.status(201).json({
       message:
         "Registration successful. Please check your email to verify your account.",
       emailSent: true,
     });
   } catch (error) {
-    console.error("Signup error:", error);
+    console.error("❌ Signup error:", error);
     res.status(500).json({ message: "Registration failed" });
     return;
   }
