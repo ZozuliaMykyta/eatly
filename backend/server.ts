@@ -16,9 +16,14 @@ const PORT: number = Number(process.env.PORT) || 5000;
 
 const app = express();
 app.use(express.json());
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL,
+].filter((origin): origin is string => Boolean(origin));
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: false,
   })

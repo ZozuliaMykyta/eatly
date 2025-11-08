@@ -17,8 +17,9 @@ const SignInForm = () => {
   } = useForm<IAuth>();
   const onSubmit: SubmitHandler<IAuth> = async (data: IAuth) => {
     try {
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
       const response = await axios.post(
-        "http://localhost:5000/api/simpleSignIn",
+        `${API_BASE_URL}/api/simpleSignIn`,
         data
       );
 

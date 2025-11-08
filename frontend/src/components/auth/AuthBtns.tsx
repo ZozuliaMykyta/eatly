@@ -9,7 +9,10 @@ const AuthBtns = () => {
     <div className="mt-[48px]">
       <button
         className="w-full bg-[rgb(245,245,245)] rounded-[13px] text-center flex justify-center items-center flex-col cursor-pointer py-[16px] transition-all duration-300 border-2 border-[rgb(245,245,245)] hover:border-black focus:border-purple focus:outline-none"
-        onClick={() => router.push("http://localhost:5000/api/auth/google")}
+        onClick={() => {
+          const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+          router.push(`${API_BASE_URL}/api/auth/google`);
+        }}
       >
         <Image
           src="/assets/img/auth/Google.svg"
