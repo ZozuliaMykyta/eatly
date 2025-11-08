@@ -1,6 +1,6 @@
 import passport from "passport";
-import googleStrategy from "./google.ts";
-import jwtStrategy from "./jwt.ts";
+import googleStrategy from "./google";
+import jwtStrategy from "./jwt";
 
 // initialize passport with Google and JWT strategies
 passport.use("google", googleStrategy);

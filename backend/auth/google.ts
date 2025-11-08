@@ -2,7 +2,7 @@ import GoogleOAuth from "passport-google-oauth20";
 const GoogleStrategy = GoogleOAuth.Strategy;
 type VerifyCallback = GoogleOAuth.VerifyCallback;
 type Profile = GoogleOAuth.Profile;
-import User from "../database/models/User.ts"; // import User for user verification
+import User from "../database/models/User"; // import User for user verification
 import { v4 as uuidv4 } from "uuid";
 
 const options = {
