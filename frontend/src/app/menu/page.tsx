@@ -3,7 +3,7 @@ import RestaurantCard from "@/components/restaurants/RestaurantCard";
 import { useGetRestaurantsQuery } from "@/lib/services/api";
 import React from "react";
 
-const page = () => {
+const Page = () => {
   const { data, error, isLoading } = useGetRestaurantsQuery();
   if (isLoading) {
     return (
@@ -36,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

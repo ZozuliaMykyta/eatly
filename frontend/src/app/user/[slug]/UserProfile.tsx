@@ -48,7 +48,7 @@ const UserCard = ({ slug }: { slug: string }) => {
             Oops! Something went wrong
           </h5>
           <p className="text-gray-600">
-            We're having trouble loading your profile. Please try again later.
+            We&apos;re having trouble loading your profile. Please try again later.
           </p>
         </div>
       </div>
@@ -66,7 +66,7 @@ const UserCard = ({ slug }: { slug: string }) => {
             User not found
           </h5>
           <p className="text-gray-600">
-            The user profile you're looking for doesn't exist.
+            The user profile you&apos;re looking for doesn&apos;t exist.
           </p>
         </div>
       </div>
