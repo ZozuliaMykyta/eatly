@@ -30,8 +30,13 @@ const verifyEmail = async (req: Request, res: Response) => {
     });
 
     // Redirect to frontend with the token
+    // Prefer NEXT_PUBLIC_FE_BASE_URL (used in tests/dev), then FRONTEND_URL (set in Render),
+    // otherwise fall back to localhost for local development.
     const frontendUrl =
-      process.env.NEXT_PUBLIC_FE_BASE_URL || "http://localhost:3000";
+      process.env.NEXT_PUBLIC_FE_BASE_URL ||
+      process.env.FRONTEND_URL ||
+      "http://localhost:3000";
+
     res.redirect(`${frontendUrl}/SignUp?accessToken=${authToken}`);
   } catch (error) {
     console.error("Email verification error:", error);

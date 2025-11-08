@@ -26,7 +26,13 @@ router.get(
       });
 
       // redirect to frontend with the accessToken as query param
-      const redirectUrl = `${process.env.NEXT_PUBLIC_FE_BASE_URL}/SignUp?accessToken=${authToken}`;
+      // Prefer NEXT_PUBLIC_FE_BASE_URL (dev/tests), then FRONTEND_URL (deployed), fallback to localhost
+      const frontendBase =
+        process.env.NEXT_PUBLIC_FE_BASE_URL ||
+        process.env.FRONTEND_URL ||
+        "http://localhost:3000";
+
+      const redirectUrl = `${frontendBase}/SignUp?accessToken=${authToken}`;
       res.redirect(redirectUrl);
     } catch (error) {
       res
