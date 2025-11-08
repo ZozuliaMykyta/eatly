@@ -5,7 +5,11 @@ import { IUser } from "@/interfaces/IUser";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  (typeof window !== "undefined" &&
+  window.location.hostname.includes("onrender.com")
+    ? "https://eatly-backend-e3dm.onrender.com"
+    : "http://localhost:5000");
 
 // Temporary debug log
 console.log("🔧 DEBUG: API_BASE_URL =", API_BASE_URL);
