@@ -7,13 +7,6 @@ import { getApiBaseUrl } from "@/utils/api";
 
 const API_BASE_URL = getApiBaseUrl();
 
-// Temporary debug log
-console.log("🔧 DEBUG: API_BASE_URL =", API_BASE_URL);
-console.log(
-  "🔧 DEBUG: NEXT_PUBLIC_API_BASE_URL =",
-  process.env.NEXT_PUBLIC_API_BASE_URL
-);
-
 export const eatlyApi = createApi({
   reducerPath: "eatlyApi",
   baseQuery: fetchBaseQuery({
