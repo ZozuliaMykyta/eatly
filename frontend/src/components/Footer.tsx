@@ -18,10 +18,6 @@ const Footer = () => {
       id: 2,
       link: "pricing",
     },
-    {
-      id: 3,
-      link: "about us",
-    },
   ];
 
   const icons = [
