@@ -12,23 +12,22 @@ import ArticlesRoute from "./routes/ArticlesRoute";
 
 dotenv.config();
 
-console.log("Environment PORT:", process.env.PORT);
 const PORT = parseInt(process.env.PORT || "10000", 10);
-console.log("Using PORT:", PORT);
 
 const app = express();
 app.use(express.json());
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:5000",
   process.env.FRONTEND_URL,
+  "https://moved-duckling-hip.ngrok-free.app",
 ].filter((origin): origin is string => Boolean(origin));
 
-// Temporarily allow all origins for debugging
 app.use(
   cors({
-    origin: true, // Allow all origins for now
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: false,
+    credentials: true,
   })
 );
 // Health check endpoint
