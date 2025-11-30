@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import food from "@/assets/img/home/hero.jpeg";
+import food from "@/assets/img/home/hero-w.webp";
 
 const Hero = () => {
   return (
