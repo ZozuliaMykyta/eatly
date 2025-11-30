@@ -114,6 +114,7 @@ const Header = () => {
           <button
             onClick={() => setIsOpenBurger(!isOpenBurger)}
             className="relative flex flex-col items-center justify-center gap-2 lg:hidden z-50 w-9 h-9"
+            aria-label="menu button"
           >
             <span
               className={`block h-0.5 w-9 bg-gray-600 transition-transform duration-300 ${
