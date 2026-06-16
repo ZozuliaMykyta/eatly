@@ -6,7 +6,7 @@
 
 🌐 **Live Demo:** [eatly-frontend-5lw5.onrender.com](https://eatly-frontend-5lw5.onrender.com)
 
-📺 **Video Walkthrough:** [Link to YouTube/Loom/GIF here]
+📺 **Video Walkthrough:** [Watch Demo](https://youtu.be/xmH29wBy7Wk)
 
 ---
 
